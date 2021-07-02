@@ -1,0 +1,115 @@
+@import "../../../../styles/components/button";
+
+.Button,
+.ButtonRound {
+  @include variant;
+  &:hover {
+    @include hover;
+  }
+
+  & > .Pending {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    border: {
+      color: var(--accent-color);
+      style: solid;
+      radius: 50%;
+      left-color: transparent !important;
+    }
+    transform: rotate(0deg) translate(-50%, -50%);
+    transform-origin: 0 0;
+    animation: cycle 0.8s linear infinite;
+  }
+
+  &_danger {
+    @include variant(danger);
+    &:hover {
+      @include hover(danger);
+    }
+
+    & > .Pending {
+      border-color: var(--danger-color);
+    }
+  }
+
+  &_warning {
+    @include variant(warning);
+    &:hover {
+      @include hover(warning);
+    }
+
+    & > .Pending {
+      border-color: var(--warning-color);
+    }
+  }
+
+  &_success {
+    @include variant(success);
+    &:hover {
+      @include hover(success);
+    }
+
+    & > .Pending {
+      border-color: var(--success-color);
+    }
+  }
+
+  &_info {
+    @include variant(info);
+    &:hover {
+      @include hover(info);
+    }
+
+    & > .Pending {
+      border-color: var(--info-color);
+    }
+  }
+
+  &:disabled {
+    background: var(--disabled-color);
+    color: var(--text-disabled-color);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+.Button {
+  @include btn;
+  & > svg {
+    font-size: 2rem;
+    &:nth-child(1) {
+      @include icon(start);
+    }
+    &:nth-child(2) {
+      @include icon(end);
+    }
+  }
+
+  & > .Pending {
+    border-width: 3px;
+    height: 1.8em;
+    width: 1.8em;
+  }
+}
+
+.ButtonRound {
+  @include btn(round);
+
+  & > .Pending {
+    border-width: 4px;
+    height: 2.9em;
+    width: 2.9em;
+  }
+}
+
+@keyframes cycle {
+  0% {
+    transform: rotate(0deg) translate(-50%, -50%);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(-50%, -50%);
+  }
+}
