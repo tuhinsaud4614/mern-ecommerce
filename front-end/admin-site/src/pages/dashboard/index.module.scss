@@ -1,7 +1,8 @@
 @import "../../styles/mixins";
 
 .root {
-  & > div {
-    @include position-center;
-  }
+  @include flex-center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @include gap(2);
 }

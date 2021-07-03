@@ -27,15 +27,15 @@ export const IconButton = forwardRef<HTMLButtonElement, IProps>(
       <button
         ref={ref}
         className={classNames(
-          styles.ButtonRound,
-          styles[`ButtonRound_${variant}`],
+          styles.root_round,
+          styles[`root_round_${variant}`],
           className
         )}
         disabled={pending || disabled}
         {...rest}
       >
         {children}
-        {pending && <span className={`${styles.Pending}`}></span>}
+        {pending && <span className={`${styles.pending}`}></span>}
       </button>
     );
   }
@@ -69,8 +69,8 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       <button
         ref={ref}
         className={classNames(
-          styles.Button,
-          styles[`Button_${variant}`],
+          styles.root,
+          styles[`root_${variant}`],
           className
         )}
         disabled={pending || disabled}
@@ -79,7 +79,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
         {startIcon && startIcon}
         {children}
         {endIcon && endIcon}
-        {pending && <span className={`${styles.Pending}`}></span>}
+        {pending && <span className={`${styles.pending}`}></span>}
       </button>
     );
   }

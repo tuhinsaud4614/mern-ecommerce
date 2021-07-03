@@ -1,13 +1,10 @@
 @import "../../../../styles/components/button";
 
-.Button,
-.ButtonRound {
+.root,
+.root_round {
   @include variant;
-  &:hover {
-    @include hover;
-  }
 
-  & > .Pending {
+  & > .pending {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -25,44 +22,32 @@
 
   &_danger {
     @include variant(danger);
-    &:hover {
-      @include hover(danger);
-    }
 
-    & > .Pending {
+    & > .pending {
       border-color: var(--danger-color);
     }
   }
 
   &_warning {
     @include variant(warning);
-    &:hover {
-      @include hover(warning);
-    }
 
-    & > .Pending {
+    & > .pending {
       border-color: var(--warning-color);
     }
   }
 
   &_success {
     @include variant(success);
-    &:hover {
-      @include hover(success);
-    }
 
-    & > .Pending {
+    & > .pending {
       border-color: var(--success-color);
     }
   }
 
   &_info {
     @include variant(info);
-    &:hover {
-      @include hover(info);
-    }
 
-    & > .Pending {
+    & > .pending {
       border-color: var(--info-color);
     }
   }
@@ -75,7 +60,7 @@
   }
 }
 
-.Button {
+.root {
   @include btn;
   & > svg {
     font-size: 2rem;
@@ -87,17 +72,17 @@
     }
   }
 
-  & > .Pending {
+  & > .pending {
     border-width: 3px;
     height: 1.8em;
     width: 1.8em;
   }
 }
 
-.ButtonRound {
+.root_round {
   @include btn(round);
 
-  & > .Pending {
+  & > .pending {
     border-width: 4px;
     height: 2.9em;
     width: 2.9em;

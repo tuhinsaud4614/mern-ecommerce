@@ -1,0 +1,31 @@
+@import "../../../../styles/components/button";
+
+.Root {
+  @include btn;
+  @include variant;
+
+  &_danger {
+    @include variant(danger);
+  }
+
+  &_warning {
+    @include variant(warning);
+  }
+
+  &_success {
+    @include variant(success);
+  }
+
+  &_info {
+    @include variant(info);
+  }
+  & > svg {
+    font-size: 2rem;
+    &:nth-child(1) {
+      @include icon(start);
+    }
+    &:nth-child(2) {
+      @include icon(end);
+    }
+  }
+}

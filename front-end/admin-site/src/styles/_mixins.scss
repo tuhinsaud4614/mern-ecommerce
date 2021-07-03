@@ -34,3 +34,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin gap($value: 1) {
+  $gap: $value * 8px;
+  margin: {
+    left: -1 * $gap;
+    top: -1 * $gap;
+  }
+  width: calc(100% + #{$gap});
+
+  & > * {
+    margin: {
+      left: $gap;
+      top: $gap;
+    }
+  }
+}

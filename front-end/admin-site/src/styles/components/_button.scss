@@ -1,13 +1,11 @@
 @import "../variable", "../mixins", "../functions";
 
 @mixin btn($type: normal) {
+  @include flex-center(true);
   position: relative;
   cursor: pointer;
   outline: none;
   border: none;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   text: {
     align: center;
     decoration: none;
@@ -26,21 +24,11 @@
 }
 
 @mixin variant($type: accent) {
-  @if $type == danger {
-    background: var(--#{$type}-color);
-    color: var(--text-alt-color);
-  } @else if $type == warning {
-    background: var(--#{$type}-color);
-    color: var(--text-color);
-  } @else if $type == success {
-    background: var(--#{$type}-color);
-    color: var(--text-alt-color);
-  } @else if $type == info {
-    background: var(--#{$type}-color);
-    color: var(--text-alt-color);
-  } @else {
-    background: var(--accent-color);
-    color: var(--text-alt-color);
+  background: var(--#{$type}-color);
+  color: var(--text-alt-color);
+
+  &:hover {
+    background: var(--#{$type}-hover-color);
   }
 }
 
@@ -49,19 +37,5 @@
     margin-right: spacing();
   } @else if $pos == end {
     margin-left: spacing();
-  }
-}
-
-@mixin hover($type: accent) {
-  @if $type == danger {
-    background: var(--#{$type}-hover-color);
-  } @else if $type == warning {
-    background: var(--#{$type}-hover-color);
-  } @else if $type == success {
-    background: var(--#{$type}-hover-color);
-  } @else if $type == info {
-    background: var(--#{$type}-hover-color);
-  } @else {
-    background: var(--accent-hover-color);
   }
 }

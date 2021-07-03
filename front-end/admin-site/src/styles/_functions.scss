@@ -1,3 +1,11 @@
 @function spacing($value: 1) {
   @return 8px * $value;
 }
+
+@function text-color($color) {
+  @if lightness(var(--danger-color)) > 70 {
+    @return var(--text-color);
+  }
+
+  @return var(--text-alt-color);
+}

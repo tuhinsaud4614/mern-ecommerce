@@ -35,10 +35,10 @@ body {
   --danger-color-rgb: rgb(245, 0, 87);
   --danger-hover-color: #ab003c;
   --danger-hover-rgb-color: rgb(171, 0, 60);
-  --warning-color: #ffeb3b;
-  --warning-rgb-color: rgb(255, 235, 59);
-  --warning-hover-color: #b2a429;
-  --warning-hover-rgb-color: rgb(178, 164, 41);
+  --warning-color: #ff9800;
+  --warning-rgb-color: rgb(255, 152, 0);
+  --warning-hover-color: #b26a00;
+  --warning-hover-rgb-color: rgb(178, 106, 0);
   --success-color: #4caf50;
   --success-rgb-color: rgb(76, 174, 79);
   --success-hover-color: #357a38;
@@ -66,6 +66,7 @@ body {
   font-family: "Rubik", "Roboto", sans-serif;
   background: #fff;
   color: var(--text-color);
+  @include transition;
 }
 
 body.dark {
@@ -83,10 +84,10 @@ body.dark {
   --info-rgb-color: rgb(144, 202, 249);
   --info-hover-color: #648dae;
   --info-hover-rgb-color: rgb(100, 141, 174);
-  --warning-color: #fff59d;
-  --warning-rgb-color: rgb(255, 245, 157);
-  --warning-hover-color: #b2ab6d;
-  --warning-hover-rgb-color: rgb(178, 171, 109);
+  --warning-color: #ffcc80;
+  --warning-rgb-color: rgb(255, 204, 128);
+  --warning-hover-color: #b28e59;
+  --warning-hover-rgb-color: rgb(178, 142, 89);
   --accent-color: #80cbc4;
   --accent-rgb-color: rgb(128, 203, 196);
   --accent-hover-color: #598e89;
