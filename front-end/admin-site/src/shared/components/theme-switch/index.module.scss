@@ -1,0 +1,29 @@
+@import "../../../styles/functions";
+
+.root {
+  cursor: pointer;
+  user-select: none;
+  height: 4rem;
+  width: 4rem;
+  animation: round 0.5s linear;
+  transform: rotateZ(225deg);
+  padding: spacing(0.5);
+  border-radius: 50%;
+  &.sun {
+    color: #fdb813;
+  }
+
+  &.moon {
+    color: var(--text-color);
+  }
+
+  @keyframes round {
+    0% {
+      transform: rotateZ(0deg);
+    }
+
+    100% {
+      transform: rotateZ(225deg);
+    }
+  }
+}

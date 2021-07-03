@@ -41,6 +41,8 @@ export const IconButton = forwardRef<HTMLButtonElement, IProps>(
   }
 );
 
+IconButton.displayName = "IconButton";
+
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   pending?: boolean;
   className?: string;
@@ -82,5 +84,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     );
   }
 );
+
+Button.displayName = "Button";
 
 export default Button;
