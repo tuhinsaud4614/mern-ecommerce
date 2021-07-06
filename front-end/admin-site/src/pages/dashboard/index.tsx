@@ -4,6 +4,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import routes from "../../routes";
 import ThemeSwitch from "../../shared/components/theme-switch";
+import Badge from "../../shared/components/ui/badge";
 import Button, { IconButton } from "../../shared/components/ui/button";
 import Input from "../../shared/components/ui/input";
 import Link from "../../shared/components/ui/link";
@@ -38,12 +39,24 @@ const Dashboard: FC<Props> = () => {
         >
           button
         </Button>
-        <IconButton variant="success">
-          <BiFile />
-        </IconButton>
+
+        <Badge
+          useFor={
+            <IconButton variant="success">
+              <BiFile />
+            </IconButton>
+          }
+        >
+          1
+        </Badge>
       </div>
       <Input multiline rows={4} />
-      <Input label="Hello" helperText="hi" icon={[<FiEye />, <FiEyeOff />]} required />
+      <Input
+        label="Hello"
+        helperText="hi"
+        icon={[<FiEye />, <FiEyeOff />]}
+        required
+      />
     </div>
   );
 };

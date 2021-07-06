@@ -3,12 +3,17 @@ import { useEffect, useState } from "react";
 type TMode = "dark" | "light";
 
 const useTheme = () => {
-  const [theme, setTheme] = useState<TMode>(
-    () => (localStorage.getItem("theme") as TMode) || "light"
-  );
+  const [theme, setTheme] = useState<TMode>(() => {
+    const temp = localStorage.getItem("theme");
+    try {
+      return (temp && (JSON.parse(temp) as TMode)) || "light";
+    } catch (e) {
+      return "light";
+    }
+  });
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
+    localStorage.setItem("theme", JSON.stringify(theme));
     if (theme === "dark") {
       !document.body.classList.contains("dark") &&
         document.body.classList.add("dark");

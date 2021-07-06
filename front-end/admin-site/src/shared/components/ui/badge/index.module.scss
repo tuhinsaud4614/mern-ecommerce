@@ -1,0 +1,38 @@
+@import "../../../../styles/functions", "../../../../styles/variable";
+
+.Root {
+  display: inline-block;
+  border-radius: spacing(1.25);
+  color: var(--text-alt-color);
+  font-size: 1.4rem;
+  padding: spacing();
+  @at-root .Floating {
+    position: relative;
+    padding: 0;
+    @each $c in $color-types {
+      &-#{$c} {
+        background: var(--#{$c}-color);
+      }
+    }
+    & > b {
+      position: absolute;
+      z-index: 10;
+      top: spacing(-0.75);
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.9em;
+      width: spacing(2.5);
+      height: spacing(2.5);
+
+      &.left {
+        left: spacing(-0.75);
+      }
+      &.right {
+        right: spacing(-0.75);
+      }
+    }
+  }
+}
