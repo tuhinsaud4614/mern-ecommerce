@@ -1,0 +1,77 @@
+@import "../../../../styles/functions", "../../../../styles/mixins";
+
+.Wrapper {
+  margin: spacing() 0;
+}
+
+.Container {
+  background: var(--primary-hover-color);
+  color: var(--text-color);
+  border-radius: spacing();
+  padding: spacing(1.25);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  & span {
+    margin-right: spacing();
+    cursor: pointer;
+    @include flex-center(true);
+    @at-root .Icon {
+      color: var(--accent-color);
+      @include transition(color);
+      &:hover {
+        color: var(--accent-hover-color);
+      }
+    }
+    & svg {
+      font-size: 2em;
+      @include animation(dim);
+      @include frames(dim) {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.Root {
+  width: 100%;
+  display: block;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 1.8rem;
+  color: inherit;
+  flex-basis: 100%;
+}
+
+.Helper {
+  font-size: 1.4rem;
+  margin: {
+    top: spacing();
+    left: spacing();
+  }
+  display: block;
+}
+
+.Label {
+  font-size: 1.6rem;
+  font-weight: 500;
+  display: inline-block;
+  margin: {
+    bottom: spacing();
+    left: spacing();
+  }
+
+  & > b {
+    color: var(--danger-color);
+    font-size: 1.6rem;
+    font-weight: 900;
+  }
+}

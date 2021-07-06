@@ -1,0 +1,11 @@
+$variants: info, danger, warning, success, primary, secondary, accent;
+
+@each $v in $variants {
+  .text-#{$v} {
+    color: var(--#{$v}-color);
+  }
+
+  .bg-#{$v} {
+    background: var(--#{$v}-color);
+  }
+}

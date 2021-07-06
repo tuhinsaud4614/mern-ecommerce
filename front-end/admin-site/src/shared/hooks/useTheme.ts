@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type TMode = "dark" | "light";
 
-const useTheme = (): [TMode, (mode: TMode) => void] => {
+const useTheme = () => {
   const [theme, setTheme] = useState<TMode>(
     () => (localStorage.getItem("theme") as TMode) || "light"
   );
@@ -21,7 +21,7 @@ const useTheme = (): [TMode, (mode: TMode) => void] => {
   const changeTheme = (mode: TMode) => {
     setTheme(mode);
   };
-  return [theme, changeTheme];
+  return [theme, changeTheme] as const;
 };
 
 export default useTheme;

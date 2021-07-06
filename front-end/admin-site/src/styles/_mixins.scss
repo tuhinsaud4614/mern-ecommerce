@@ -50,3 +50,33 @@
     }
   }
 }
+
+@mixin animation(
+  $name,
+  $count: "",
+  $delay: "",
+  $mode: "",
+  $duration: 0.3s,
+  $function: ease-in-out
+) {
+  animation: {
+    name: $name;
+    duration: $duration;
+    timing-function: $function;
+  }
+  @if $count {
+    animation-iteration-count: unquote($count);
+  }
+  @if $mode {
+    animation-fill-mode: unquote($mode);
+  }
+  @if $delay {
+    animation-delay: unquote($delay);
+  }
+}
+
+@mixin frames($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}

@@ -53,12 +53,12 @@ body {
   --accent-hover-rgb-color: rgb(0, 105, 95);
   --primary-color: #6a8d92;
   --primary-rgb-color: rgb(106, 141, 146);
-  --primary-hover-color: #c4d2d4;
-  --primary-hover-rgb-color: rgb(196, 210, 212);
-  --secondary-color: #4b4e6d;
-  --secondary-rgb-color: rgb(75, 78, 109);
-  --secondary-hover-color: #9395b4;
-  --secondary-hover-rgb-color: rgb(147, 149, 180);
+  --primary-hover-color: #c4d2d470;
+  --primary-hover-rgb-color: rgba(196, 210, 212, 0.439);
+  --secondary-color: #482880;
+  --secondary-rgb-color: rgb(72, 40, 128);
+  --secondary-hover-color: #673ab7;
+  --secondary-hover-rgb-color: rgb(103, 58, 183);
   --text-color: #121212;
   --text-alt-color: #fff;
   --text-disabled-color: rgba(0, 0, 0, 0.26);
@@ -106,3 +106,5 @@ body.dark {
 
   background-color: #121212;
 }
+
+@import "./styles/utilities";
