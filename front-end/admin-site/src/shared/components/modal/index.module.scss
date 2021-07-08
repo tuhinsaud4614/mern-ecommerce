@@ -1,0 +1,96 @@
+@import "../../../styles/mixins", "../../../styles/functions",
+  "../../../styles/variable";
+
+.Backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  @include position-all-weight;
+}
+
+.Center {
+  @include flex-center;
+  padding: spacing(2);
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--text-alt-color);
+  box-shadow: $box-shadow;
+  border-radius: spacing();
+  width: 100%;
+  max-height: calc(100% - #{spacing(2)});
+  margin: spacing(2);
+  overflow: hidden;
+
+  @include media(map-get($breakpoints, "sm")) {
+    & {
+      max-width: 576px - spacing(4);
+      margin: {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+}
+
+.Head {
+  order: 1;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: spacing(2);
+  border-bottom: 1px solid var(--text-disabled-color);
+  border-top: {
+    left-radius: spacing();
+    right-radius: spacing();
+  }
+
+  #{&}Title {
+    margin: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  #{&}Icon {
+    border-radius: spacing(0.5);
+    box-shadow: none;
+    padding: spacing(0.5);
+  }
+}
+
+.Scroll {
+  & .Body {
+    overflow-y: auto;
+  }
+}
+
+.Body {
+  order: 2;
+  position: relative;
+  flex: 1 1 auto;
+  padding: spacing(2);
+}
+
+.Foot {
+  order: 3;
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  padding: spacing(2);
+  border-top: 1px solid var(--text-disabled-color);
+  border-bottom: {
+    left-radius: spacing();
+    right-radius: spacing();
+  }
+  @at-root #{&}start {
+    justify-content: flex-start;
+  }
+  @at-root #{&}center {
+    justify-content: center;
+  }
+  @at-root #{&}end {
+    justify-content: flex-end;
+  }
+}

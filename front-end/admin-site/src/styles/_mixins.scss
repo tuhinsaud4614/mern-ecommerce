@@ -80,3 +80,18 @@
     @content;
   }
 }
+// position with 100% height & width
+@mixin position-all-weight($p: fixed, $index: 1300) {
+  position: $p;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $index;
+}
+
+@mixin media($bp, $range: min, $unit: width) {
+  @media (#{$range}-#{$unit}: $bp) {
+    @content;
+  }
+}
