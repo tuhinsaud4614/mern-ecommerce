@@ -8,6 +8,7 @@ import {
 } from "react";
 import { motion, Variants } from "framer-motion";
 import { IconType } from "react-icons";
+import { IoWarningOutline } from "react-icons/io5";
 import classNames from "classnames";
 
 import HelperText from "./helper-text";
@@ -88,7 +89,7 @@ const Input = forwardRef<InputControl, Props>(
     };
 
     return (
-      <div className={classNames(classes?.wrapper, styles.Wrapper)} >
+      <div className={classNames(classes?.wrapper, styles.Wrapper)}>
         {label && (
           <Label className={classes?.label} id={id} required={required}>
             {label}
@@ -126,6 +127,14 @@ const Input = forwardRef<InputControl, Props>(
             required={required}
             {...rest}
           />
+          {valid && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <IoWarningOutline className="text-danger" />
+            </motion.span>
+          )}
         </motion.div>
         {helperText && <HelperText>{helperText}</HelperText>}
       </div>

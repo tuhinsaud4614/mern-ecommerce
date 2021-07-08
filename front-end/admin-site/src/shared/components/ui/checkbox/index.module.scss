@@ -1,0 +1,35 @@
+@import "../../../../styles/mixins", "../../../../styles/functions",
+  "../../../../styles/variable";
+
+.Root {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: spacing();
+  & .Block {
+    display: flex;
+  }
+  & > input {
+    display: none;
+  }
+
+  .Box {
+    @include flex-center(true);
+    height: 22px;
+    width: 22px;
+    border-radius: spacing(0.5);
+
+    & > span {
+      display: block;
+      height: 1.4em;
+      width: 1.4em;
+      border-radius: inherit;
+      box-shadow: $box-shadow;
+    }
+  }
+  .Label {
+    font-size: 1.6rem;
+    display: inline-block;
+    margin-left: spacing(2);
+  }
+}

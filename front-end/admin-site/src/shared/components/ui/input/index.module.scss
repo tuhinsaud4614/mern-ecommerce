@@ -14,26 +14,35 @@
   align-items: center;
 
   & span {
-    margin-right: spacing();
-    cursor: pointer;
     @include flex-center(true);
+    &:nth-child(1) {
+      margin-right: spacing();
+    }
+
+    & > svg {
+      font-size: 2em;
+    }
+
     @at-root .Icon {
+      margin-right: spacing();
+      cursor: pointer;
       color: var(--accent-color);
       @include transition(color);
+
       &:hover {
         color: var(--accent-hover-color);
       }
-    }
-    & svg {
-      font-size: 2em;
-      @include animation(dim);
-      @include frames(dim) {
-        0% {
-          opacity: 0;
-        }
 
-        100% {
-          opacity: 1;
+      & > svg {
+        @include animation(dim);
+        @include frames(dim) {
+          0% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 1;
+          }
         }
       }
     }

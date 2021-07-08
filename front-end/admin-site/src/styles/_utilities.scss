@@ -8,4 +8,8 @@ $variants: info, danger, warning, success, primary, secondary, accent;
   .bg-#{$v} {
     background: var(--#{$v}-color);
   }
+
+  .border-#{$v} {
+    border: 1px solid var(--#{$v}-color);
+  }
 }

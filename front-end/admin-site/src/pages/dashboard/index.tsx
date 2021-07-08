@@ -7,6 +7,7 @@ import Modal from "../../shared/components/modal";
 import ThemeSwitch from "../../shared/components/theme-switch";
 import Badge from "../../shared/components/ui/badge";
 import Button, { IconButton } from "../../shared/components/ui/button";
+import Checkbox from "../../shared/components/ui/checkbox";
 import Input from "../../shared/components/ui/input";
 import Link from "../../shared/components/ui/link";
 import styles from "./index.module.scss";
@@ -15,6 +16,7 @@ interface Props {}
 
 const Dashboard: FC<Props> = () => {
   const [s, setS] = useState<boolean>(false);
+  const [m, setM] = useState<boolean>(false);
   console.log("dashboard");
   return (
     <div style={{ padding: "1.6rem" }}>
@@ -25,7 +27,7 @@ const Dashboard: FC<Props> = () => {
           startIcon={<BiFile />}
           endIcon={<BiFile />}
           variant="info"
-          onClick={() => setS(true)}
+          onClick={() => setM(true)}
         >
           button
         </Button>
@@ -64,7 +66,21 @@ const Dashboard: FC<Props> = () => {
         icon={[<FiEye />, <FiEyeOff />]}
         required
       />
-      <Modal open={s} onHide={() => setS(false)}>
+      <Input
+        label="Hello"
+        helperText="hi"
+        icon={<FiEye />}
+        valid={false}
+        required
+      />
+      <Checkbox
+        onChange={(e) => {
+          e.target.checked ? setS(true) : setS(false);
+        }}
+        label="checkbox"
+        checked={s}
+      />
+      <Modal open={m} onHide={() => setM(false)}>
         <Modal.Head closeIcon>h</Modal.Head>
         <Modal.Body>h</Modal.Body>
         <Modal.Foot align="start">
