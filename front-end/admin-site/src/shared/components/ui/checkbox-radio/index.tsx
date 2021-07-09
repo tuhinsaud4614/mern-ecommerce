@@ -12,6 +12,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
   };
   label?: string;
+  type?: "checkbox" | "radio";
   variant?: "accent" | "info" | "danger" | "warning" | "success";
 }
 
@@ -26,7 +27,7 @@ const variants: Variants = {
   },
 };
 
-const Checkbox = forwardRef<HTMLInputElement, Props>(
+const CheckboxRadio = forwardRef<HTMLInputElement, Props>(
   (
     {
       block = false,
@@ -47,9 +48,14 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
           classes?.root
         )}
       >
-        <input ref={ref} type={type} {...rest} />
+        <input ref={ref} type={type} checked={checked} {...rest} />
         <span
-          className={classNames(styles.Box, classes?.box, `border-${variant}`)}
+          className={classNames(
+            styles.Box,
+            type === "checkbox" ? styles.Check : styles.Radio,
+            classes?.box,
+            `border-${variant}`
+          )}
         >
           <motion.span
             className={classNames(`bg-${variant}`)}
@@ -74,6 +80,6 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
   }
 );
 
-Checkbox.displayName = "Checkbox";
+CheckboxRadio.displayName = "CheckboxRadio";
 
-export default Checkbox;
+export default CheckboxRadio;

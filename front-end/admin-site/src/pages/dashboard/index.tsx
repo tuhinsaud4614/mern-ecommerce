@@ -7,7 +7,7 @@ import Modal from "../../shared/components/modal";
 import ThemeSwitch from "../../shared/components/theme-switch";
 import Badge from "../../shared/components/ui/badge";
 import Button, { IconButton } from "../../shared/components/ui/button";
-import Checkbox from "../../shared/components/ui/checkbox";
+import CheckboxRadio from "../../shared/components/ui/checkbox-radio";
 import Input from "../../shared/components/ui/input";
 import Link from "../../shared/components/ui/link";
 import styles from "./index.module.scss";
@@ -16,8 +16,9 @@ interface Props {}
 
 const Dashboard: FC<Props> = () => {
   const [s, setS] = useState<boolean>(false);
+  const [r, setR] = useState<"left" | "right">("right");
   const [m, setM] = useState<boolean>(false);
-  console.log("dashboard");
+  console.log("dashboard", r);
   return (
     <div style={{ padding: "1.6rem" }}>
       <div className={styles.root} style={{ padding: "1.6rem" }}>
@@ -31,9 +32,7 @@ const Dashboard: FC<Props> = () => {
         >
           button
         </Button>
-        <Button startIcon={<BiFile />} endIcon={<BiFile />} variant="danger">
-          button
-        </Button>
+        <Button variant="danger">Button</Button>
         <Button startIcon={<BiFile />} endIcon={<BiFile />} variant="warning">
           button
         </Button>
@@ -49,14 +48,18 @@ const Dashboard: FC<Props> = () => {
           button
         </Button>
 
+
         <Badge
+          max={1300}
+          hideFloat={s}
+          position={{ horizontal: r }}
           useFor={
             <IconButton variant="success">
               <BiFile />
             </IconButton>
           }
         >
-          1
+          1334
         </Badge>
       </div>
       <Input multiline rows={4} />
@@ -73,12 +76,32 @@ const Dashboard: FC<Props> = () => {
         valid={false}
         required
       />
-      <Checkbox
+      <CheckboxRadio
         onChange={(e) => {
-          e.target.checked ? setS(true) : setS(false);
+          setS(e.target.checked);
         }}
-        label="checkbox"
+        label="show"
         checked={s}
+      />
+      <CheckboxRadio
+        value="left"
+        name="r"
+        type="radio"
+        onChange={(e) => {
+          setR(e.target.value as "left");
+        }}
+        label="left"
+        checked={r === "left"}
+      />
+      <CheckboxRadio
+        value="right"
+        name="r"
+        type="radio"
+        onChange={(e) => {
+          setR(e.target.value as "right");
+        }}
+        label="right"
+        checked={r === "right"}
       />
       <Modal open={m} onHide={() => setM(false)}>
         <Modal.Head closeIcon>h</Modal.Head>

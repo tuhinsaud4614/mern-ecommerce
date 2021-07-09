@@ -1,13 +1,15 @@
 import classNames from "classnames";
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 import styles from "./index.module.scss";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
-  useFor?: JSX.Element;
   className?: string;
   children: ReactNode;
+  hideFloat?: boolean;
+  max?: number;
+  position?: { horizontal?: "left" | "right"; vertical?: "top" | "bottom" };
   variant?:
     | "info"
     | "danger"
@@ -16,12 +18,31 @@ interface Props extends HTMLAttributes<HTMLSpanElement> {
     | "primary"
     | "secondary"
     | "accent";
-  position?: "left" | "right";
+  useFor?: ReactNode;
+}
+
+const variants: Variants = {
+  hidden: { opacity: 0, scale: 0 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+function cutString(child: ReactNode, max?: number): string | ReactNode {
+  return max && child && !Number.isNaN(child) && +child > max
+    ? `${max}+`
+    : child;
 }
 
 const Badge = forwardRef<HTMLSpanElement, Props>(
   (
-    { useFor, className, variant = "danger", position = "right", children },
+    {
+      useFor,
+      className,
+      hideFloat = false,
+      max,
+      variant = "danger",
+      position,
+      children,
+    },
     ref
   ) => {
     return (
@@ -33,18 +54,25 @@ const Badge = forwardRef<HTMLSpanElement, Props>(
           useFor ? styles.Floating : `bg-${variant}`
         )}
       >
-        {useFor ? useFor : children}
+        {useFor ? useFor : cutString(children, max)}
         {useFor && (
-          <motion.b
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className={classNames(
-              styles[position],
-              styles[`Floating-${variant}`]
+          <AnimatePresence exitBeforeEnter>
+            {!hideFloat && (
+              <motion.b
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                className={classNames(
+                  styles[position?.horizontal || "right"],
+                  styles[position?.vertical || "top"],
+                  styles[`Floating-${variant}`]
+                )}
+              >
+                {cutString(children, max)}
+              </motion.b>
             )}
-          >
-            {children}
-          </motion.b>
+          </AnimatePresence>
         )}
       </span>
     );

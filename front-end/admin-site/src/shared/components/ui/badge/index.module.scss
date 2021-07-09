@@ -17,20 +17,26 @@
     & > b {
       position: absolute;
       z-index: 10;
-      top: spacing(-0.75);
+
       color: inherit;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
+      border-radius: spacing(1.25);
+      padding: 0 spacing(0.75);
       font-size: 0.9em;
-      width: spacing(2.5);
+      min-width: spacing(2.5);
       height: spacing(2.5);
-
-      &.left {
+      @at-root .top {
+        top: spacing(-0.75);
+      }
+      @at-root .bottom {
+        bottom: spacing(-0.75);
+      }
+      @at-root .left {
         left: spacing(-0.75);
       }
-      &.right {
+      @at-root .right {
         right: spacing(-0.75);
       }
     }

@@ -17,7 +17,13 @@
     @include flex-center(true);
     height: 22px;
     width: 22px;
-    border-radius: spacing(0.5);
+    &.Radio {
+      border-radius: 50%;
+    }
+
+    &.Check {
+      border-radius: spacing(0.5);
+    }
 
     & > span {
       display: block;
