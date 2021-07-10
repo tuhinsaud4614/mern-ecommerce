@@ -1,0 +1,10 @@
+@import "./styles/functions";
+
+.Container {
+  display: flex;
+}
+
+.Main {
+  flex-basis: 100%;
+  padding: spacing(2);
+}

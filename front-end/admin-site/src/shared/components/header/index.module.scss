@@ -1,0 +1,80 @@
+@import "../../../styles/functions", "../../../styles/variable";
+
+.Root {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: spacing(7.75);
+  background: var(--secondary-color);
+  padding: spacing(2);
+  display: flex;
+  align-items: center;
+  box-shadow: $box-shadow;
+}
+
+.MenuIcon {
+  padding: spacing(0.5);
+  margin-right: spacing(2);
+  outline: none;
+  width: 32px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+
+  & > span {
+    display: block;
+    height: 2px;
+    background: var(--text-alt-color);
+    &:not(:last-child) {
+      margin-bottom: spacing(0.5);
+    }
+  }
+}
+
+.Nav {
+  margin-left: auto;
+
+  @at-root #{&}Items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  @at-root #{&}Item {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: spacing(1.25);
+    }
+
+    & > a {
+      display: inline-block;
+      font-size: 1.6rem;
+      color: var(--text-alt-color);
+      text-decoration: none;
+    }
+  }
+}
+
+.header-nav__item-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: var(--default-color-light);
+  width: max-content;
+  display: none;
+}
+
+.header-nav__item-dropdown > a {
+  display: block;
+  padding: 10px 15px;
+}
+
+.header-nav__item-dropdown > a:not(:last-child) {
+  border-bottom: 0.2px solid var(--default-color);
+}

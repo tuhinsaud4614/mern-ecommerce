@@ -1,4 +1,4 @@
-@import "../../../../styles/components/button";
+@import "../../../../styles/components/button", "../../../../styles/variable";
 
 .root,
 .root_round {
@@ -19,36 +19,13 @@
     transform-origin: 0 0;
     animation: cycle 0.8s linear infinite;
   }
+  @each $c in $color-types {
+    &_#{$c} {
+      @include variant(#{$c});
 
-  &_danger {
-    @include variant(danger);
-
-    & > .pending {
-      border-color: var(--danger-color);
-    }
-  }
-
-  &_warning {
-    @include variant(warning);
-
-    & > .pending {
-      border-color: var(--warning-color);
-    }
-  }
-
-  &_success {
-    @include variant(success);
-
-    & > .pending {
-      border-color: var(--success-color);
-    }
-  }
-
-  &_info {
-    @include variant(info);
-
-    & > .pending {
-      border-color: var(--info-color);
+      & > .pending {
+        border-color: var(--#{$c}-color);
+      }
     }
   }
 

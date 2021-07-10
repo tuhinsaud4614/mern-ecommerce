@@ -1,0 +1,27 @@
+@import "../../../styles/functions", "../../../styles/variable";
+
+.Root {
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  border-radius: spacing();
+  overflow: hidden;
+  cursor: pointer;
+
+  & > span {
+    &:nth-child(1) {
+      background: #fff;
+      padding: spacing();
+      color: #f50057;
+    }
+    &:nth-child(2) {
+      background: #f50057;
+      padding: spacing();
+      color: #fff;
+    }
+  }
+}

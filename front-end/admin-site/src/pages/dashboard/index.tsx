@@ -50,8 +50,8 @@ const Dashboard: FC<Props> = () => {
 
 
         <Badge
-          max={1300}
-          hideFloat={s}
+          max={99}
+          hideFloat={!s}
           position={{ horizontal: r }}
           useFor={
             <IconButton variant="success">

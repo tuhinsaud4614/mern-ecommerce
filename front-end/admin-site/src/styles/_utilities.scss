@@ -1,4 +1,4 @@
-$variants: info, danger, warning, success, primary, secondary, accent;
+$variants: info, danger, warning, success, primary, secondary, accent, disabled;
 
 @each $v in $variants {
   .text-#{$v} {
