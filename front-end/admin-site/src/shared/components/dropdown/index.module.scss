@@ -1,0 +1,32 @@
+@import "../../../styles/mixins", "../../../styles/functions",
+  "../../../styles/variable";
+
+.Backdrop {
+  background: rgba(0, 0, 0, 0.005);
+  @include position-all-weight(fixed, 1400);
+}
+
+.Root {
+  position: absolute;
+  border-radius: spacing();
+  background: var(--text-alt-color);
+  box-shadow: $box-shadow;
+  overflow: hidden;
+}
+
+.Items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Item {
+    padding: spacing();
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    transition: all .3s ease-in-out;
+    &:hover {
+        background: var(--disabled-color);
+    }
+}

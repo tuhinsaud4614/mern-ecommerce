@@ -7,12 +7,13 @@ import classNames from "classnames";
 
 import routes from "../../../routes";
 import Avatar from "../avatar";
-import { IconButton } from "../ui/button";
+import Dropdown from "../dropdown";
 import Badge from "../ui/badge";
 import Logo from "../logo";
+import { IconButton } from "../ui/button";
 import styles from "./index.module.scss";
 
-const initial = { rotate: "0", x: "0", y: "0" };
+const initial = { rotate: "0deg", x: 0, y: 0 };
 
 const Header = ({
   className,
@@ -20,6 +21,7 @@ const Header = ({
   ...rest
 }: ComponentPropsWithRef<"header">) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [ele, setEle] = useState<HTMLElement | null>(null);
   const { push } = useHistory();
 
   return createPortal(
@@ -32,10 +34,12 @@ const Header = ({
         }}
       >
         <motion.span
+          initial={initial}
           animate={open ? { rotate: "45deg", x: 0, y: 6 } : initial}
         />
         <span style={{ opacity: open ? 0 : 1 }} />
         <motion.span
+          initial={initial}
           animate={open ? { rotate: "-45deg", x: 0, y: -6 } : initial}
         />
       </button>
@@ -65,7 +69,21 @@ const Header = ({
             </Badge>
           </li>
           <li className={styles.NavItem}>
-            <Avatar src="https://material-ui.com/static/images/avatar/1.jpg">H</Avatar>
+            <Avatar
+              style={{ cursor: "pointer" }}
+              src="https://images.unsplash.com/photo-1624877815516-9cc0ecea541a"
+              onClick={(e) => setEle(e.currentTarget)}
+            >
+              H
+            </Avatar>
+            <Dropdown
+              open={Boolean(ele)}
+              relativeElement={ele}
+              onClose={() => setEle(null)}
+            >
+                <Dropdown.Item>li</Dropdown.Item>
+                <Dropdown.Item>li2</Dropdown.Item>
+            </Dropdown>
           </li>
           {/* <li className="header-nav__item">
             <a href="javascript: void(0)" className="p-0" id="admin-avatar-btn">

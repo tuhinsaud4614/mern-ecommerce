@@ -107,4 +107,19 @@ body.dark {
   background-color: #121212;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: var(--text-alt-color);
+    @at-root #{&}-thumb {
+        border-radius: 12px;
+        background-color: var(--text-color);
+        border: 2px solid var(--text-alt-color);
+    }
+
+    @at-root #{&}-track {
+        border-radius: 3px;
+        background-color: var(--text-alt-color);
+    }
+}
+
 @import "./styles/utilities";
