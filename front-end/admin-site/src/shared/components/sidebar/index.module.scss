@@ -1,0 +1,109 @@
+@import "../../../styles/functions", "../../../styles/mixins",
+  "../../../styles/variable";
+
+.Root {
+  z-index: 200;
+  position: fixed;
+  left: 0;
+  top: 64px;
+  height: calc(100vh - 64px);
+  background: var(--primary-color);
+  overflow-y: auto;
+  width: 190px;
+
+  box-shadow: 2px 0px 4px -1px rgba(0, 0, 0, 0.2),
+    4px 0px 5px 0px rgba(0, 0, 0, 0.14), 1px 0px 10px 0px rgba(0, 0, 0, 0.12);
+
+  @include media(map-get($breakpoints, "md")) {
+    & {
+      position: sticky;
+      box-shadow: none;
+    }
+  }
+}
+
+.Head {
+  display: flex;
+  padding: spacing();
+  border-bottom: 1px solid var(--text-alt-color);
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: inherit;
+
+  & > h1 {
+    margin: 0;
+    color: var(--text-alt-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    flex: 1;
+  }
+}
+
+.Nav {
+  @at-root #{&}Items,
+    #{&}SubItems {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @at-root #{&}Item,
+    #{&}SubItem {
+    & > a,
+    & > span {
+      cursor: pointer;
+      font-size: 1.6rem;
+      color: var(--text-alt-color);
+      text-decoration: none;
+      display: block;
+
+      transition: color 0.3s ease-in-out;
+
+      & > i {
+        @include flex-center(true);
+      }
+    }
+  }
+
+  @at-root #{&}Item > a,
+    #{&}Item > span {
+    padding: spacing() spacing(2);
+    display: flex;
+    align-items: center;
+
+    & > span {
+      padding-left: spacing();
+      user-select: none;
+      display: block;
+      flex-basis: 100%;
+    }
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  @at-root #{&}SubItem {
+    display: block;
+
+    &:not(:last-child) {
+      margin-bottom: spacing();
+    }
+
+    & > a {
+      padding: {
+        left: spacing(5);
+        right: spacing(2);
+      }
+
+      &:hover {
+        color: var(--text-color);
+      }
+    }
+  }
+}
+
+.LinkActive {
+  color: var(--text-color) !important;
+}

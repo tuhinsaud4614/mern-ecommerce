@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
 import classNames from "classnames";
 
+import { useAppDispatch, useAppSelector } from "../../../store";
+import { toggleMenu } from "../../../store/features/settings/settingsSlice";
 import routes from "../../../routes";
 import Avatar from "../avatar";
 import Dropdown from "../dropdown";
-import Badge from "../ui/badge";
 import Logo from "../logo";
+import Badge from "../ui/badge";
 import { IconButton } from "../ui/button";
 import styles from "./index.module.scss";
 
@@ -20,7 +22,10 @@ const Header = ({
   ref,
   ...rest
 }: ComponentPropsWithRef<"header">) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const rdxDispatch = useAppDispatch();
+  const { open } = useAppSelector(
+    (state) => state.settings.sidebar
+  );
   const [ele, setEle] = useState<HTMLElement | null>(null);
   const { push } = useHistory();
 
@@ -29,9 +34,7 @@ const Header = ({
       <button
         type="button"
         className={styles.MenuIcon}
-        onClick={() => {
-          setOpen((prev) => !prev);
-        }}
+        onClick={() => rdxDispatch(toggleMenu())}
       >
         <motion.span
           initial={initial}
@@ -81,23 +84,10 @@ const Header = ({
               relativeElement={ele}
               onClose={() => setEle(null)}
             >
-                <Dropdown.Item>li</Dropdown.Item>
-                <Dropdown.Item>li2</Dropdown.Item>
+              <Dropdown.Item>li</Dropdown.Item>
+              <Dropdown.Item>li2</Dropdown.Item>
             </Dropdown>
           </li>
-          {/* <li className="header-nav__item">
-            <a href="javascript: void(0)" className="p-0" id="admin-avatar-btn">
-              <img className="avatar" src="./img/user.jpg" alt="User" />
-            </a>
-            <div className="header-nav__item-dropdown d-sh">
-              <a href="#" className="link-btn-normal">
-                Edit Profile
-              </a>
-              <a href="#" className="link-btn-normal">
-                Logout
-              </a>
-            </div>
-          </li> */}
         </ul>
       </nav>
     </header>,

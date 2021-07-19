@@ -14,7 +14,7 @@ interface Props {
     horizontal?: "left" | "right";
     vertical?: "top" | "bottom";
   };
-  children?: ReactElement<ComponentPropsWithRef<'li'>>[]
+  children?: ReactElement<ComponentPropsWithRef<"li">>[];
 }
 
 const variants: Variants = {
@@ -26,7 +26,13 @@ const variants: Variants = {
   },
 };
 
-const Dropdown = ({ relativeElement, open, position, onClose, children }: Props) => {
+const Dropdown = ({
+  relativeElement,
+  open,
+  position,
+  onClose,
+  children,
+}: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -43,9 +49,12 @@ const Dropdown = ({ relativeElement, open, position, onClose, children }: Props)
           let temp1 = window.innerHeight - currentEleProps.height;
           if (horizontal === "left") {
             h =
-              relativeEleProps.left + currentEleProps.width <= document.body.offsetWidth
+              relativeEleProps.left + currentEleProps.width <=
+              document.body.offsetWidth
                 ? relativeEleProps.left
-                : temp <= 0 ? 0: temp;
+                : temp <= 0
+                ? 0
+                : temp;
           } else if (horizontal === "right") {
             let right = document.body.offsetWidth - relativeEleProps.right;
             h =
@@ -55,8 +64,14 @@ const Dropdown = ({ relativeElement, open, position, onClose, children }: Props)
                 ? 0
                 : temp;
           }
-          if(vertical === "top"){
-              v = relativeEleProps.top + currentEleProps.height <= window.innerHeight? relativeEleProps.top : temp1 <= 0 ? 0: temp1;
+          if (vertical === "top") {
+            v =
+              relativeEleProps.top + currentEleProps.height <=
+              window.innerHeight
+                ? relativeEleProps.top
+                : temp1 <= 0
+                ? 0
+                : temp1;
           } else if (vertical === "bottom") {
             let bottom = window.innerHeight - relativeEleProps.bottom;
             v =
@@ -88,16 +103,14 @@ const Dropdown = ({ relativeElement, open, position, onClose, children }: Props)
           animate={"visible"}
         >
           <motion.div
-            onClick={(e) => e.stopPropagation()} 
+            onClick={(e) => e.stopPropagation()}
             className={classNames(styles.Root)}
             ref={ref}
             variants={variants}
             initial="hidden"
             animate={"visible"}
           >
-            <ul className={classNames(styles.Items)}>
-                {children}
-            </ul>
+            <ul className={classNames(styles.Items)}>{children}</ul>
           </motion.div>
         </motion.div>
       )}
@@ -109,5 +122,5 @@ const Dropdown = ({ relativeElement, open, position, onClose, children }: Props)
 Dropdown.displayName = "Dropdown";
 
 export default Object.assign(Dropdown, {
-    Item: Item
+  Item: Item,
 });

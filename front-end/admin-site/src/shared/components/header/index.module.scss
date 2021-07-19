@@ -1,11 +1,6 @@
 @import "../../../styles/functions", "../../../styles/variable";
 
 .Root {
-  position: sticky;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
   min-height: spacing(7.75);
   background: var(--secondary-color);
   padding: spacing(2);
@@ -16,7 +11,7 @@
 
 .MenuIcon {
   padding: spacing(0.5);
-  margin-right: spacing(2);
+  margin-right: spacing();
   outline: none;
   width: 32px;
   cursor: pointer;

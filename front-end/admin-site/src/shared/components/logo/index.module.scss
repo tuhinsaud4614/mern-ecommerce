@@ -2,13 +2,13 @@
 
 .Root {
   text-decoration: none;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 2px;
   display: inline-flex;
   align-items: center;
   width: max-content;
-  border-radius: spacing();
+  border-radius: spacing(0.5);
   overflow: hidden;
   cursor: pointer;
 
