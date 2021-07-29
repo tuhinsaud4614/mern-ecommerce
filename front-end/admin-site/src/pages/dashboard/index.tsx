@@ -1,28 +1,29 @@
-import { FC, useState } from "react";
-import { BiFile } from "react-icons/bi";
-import { FiEye, FiEyeOff } from "react-icons/fi";
+// import { FC, useState } from "react";
+// import { BiFile } from "react-icons/bi";
+// import { FiEye, FiEyeOff } from "react-icons/fi";
 
-import routes from "../../routes";
-import Modal from "../../shared/components/modal";
-import ThemeSwitch from "../../shared/components/theme-switch";
-import Badge from "../../shared/components/ui/badge";
-import Button, { IconButton } from "../../shared/components/ui/button";
-import CheckboxRadio from "../../shared/components/ui/checkbox-radio";
-import Input from "../../shared/components/ui/input";
-import Link from "../../shared/components/ui/link";
-import styles from "./index.module.scss";
+import Select from "../../shared/components/select";
 
-interface Props {}
+// import routes from "../../routes";
+// import Modal from "../../shared/components/modal";
+// import Badge from "../../shared/components/ui/badge";
+// import Button, { IconButton } from "../../shared/components/ui/button";
+// import CheckboxRadio from "../../shared/components/ui/checkbox-radio";
+// import Input from "../../shared/components/ui/input";
+// import Link from "../../shared/components/ui/link";
+// import styles from "./index.module.scss";
 
-const Dashboard: FC<Props> = () => {
-  const [s, setS] = useState<boolean>(false);
-  const [r, setR] = useState<"left" | "right">("right");
-  const [m, setM] = useState<boolean>(false);
-  console.log("dashboard", r);
+// interface Props {}
+
+const Dashboard = () => {
+  // const [s, setS] = useState<boolean>(false);
+  // const [r, setR] = useState<"left" | "right">("right");
+  // const [m, setM] = useState<boolean>(false);
+  // console.log("dashboard", r);
   return (
-    <div style={{ padding: "1.6rem" }}>
-      <div className={styles.root} style={{ padding: "1.6rem" }}>
-        <ThemeSwitch />
+    <div>
+      <Select searchable />
+      {/* <div className={styles.root} style={{ padding: "1.6rem" }}>
         <Link to={routes.dashboard.path}>Dashboard</Link>
         <Button
           startIcon={<BiFile />}
@@ -62,7 +63,8 @@ const Dashboard: FC<Props> = () => {
           1334
         </Badge>
       </div>
-      <Input multiline rows={4} />
+       */}
+      {/* <Input multiline rows={4} />
       <Input
         label="Hello"
         helperText="hi"
@@ -114,7 +116,7 @@ const Dashboard: FC<Props> = () => {
             button
           </Button>
         </Modal.Foot>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

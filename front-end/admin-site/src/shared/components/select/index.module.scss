@@ -1,0 +1,74 @@
+@import "../../../styles/functions", "../../../styles/mixins";
+
+.Root {
+  background: var(--primary-hover-color);
+  border-radius: spacing();
+  padding: spacing(1.25);
+  position: relative;
+}
+
+.Content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @include gap(1.25);
+
+  & > p {
+    color: var(--disabled-color);
+    font-size: 1.6rem;
+  }
+
+  & > span {
+    display: inline-block;
+    color: var(--accent-color);
+    font-size: 1.6rem;
+
+    @at-root &.Pill {
+      background: var(--disabled-color);
+      padding: spacing(0.5);
+      display: inline-flex;
+      align-items: center;
+      border-radius: spacing(0.5);
+      & > svg {
+        background: var(--danger-color);
+        color: var(--text-alt-color);
+        font-size: inherit;
+        cursor: pointer;
+        margin-left: spacing(0.5);
+        border-radius: inherit;
+      }
+    }
+  }
+
+  & > input {
+    flex: 1;
+    font-size: 1.6rem;
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+}
+
+.Options {
+  position: absolute;
+  top: calc(100% + #{spacing(2)});
+  left: 0;
+  right: 0;
+  border-radius: inherit;
+  background: inherit;
+  padding: spacing(0.5) 0;
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.Option {
+  padding: spacing();
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  &:hover {
+    background: var(--disabled-color);
+  }
+}
