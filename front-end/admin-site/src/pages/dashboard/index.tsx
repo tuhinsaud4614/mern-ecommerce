@@ -1,3 +1,4 @@
+import { useState } from "react";
 // import { FC, useState } from "react";
 // import { BiFile } from "react-icons/bi";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -19,10 +20,21 @@ const Dashboard = () => {
   // const [s, setS] = useState<boolean>(false);
   // const [r, setR] = useState<"left" | "right">("right");
   // const [m, setM] = useState<boolean>(false);
-  // console.log("dashboard", r);
+  const [value, setValue] = useState<string>("");
   return (
     <div>
-      <Select searchable />
+      <Select
+        options={[
+          { name: "Hi", value: "hi" },
+          { name: "Hello", value: "hello" },
+          { name: "Zoo", value: "zoo" },
+        ]}
+        hideOnSelect
+        onSelect={({ value }) => {
+          setValue(value);
+        }}
+        // searchable
+      />
       {/* <div className={styles.root} style={{ padding: "1.6rem" }}>
         <Link to={routes.dashboard.path}>Dashboard</Link>
         <Button

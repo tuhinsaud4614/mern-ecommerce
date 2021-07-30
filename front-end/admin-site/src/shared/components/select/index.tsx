@@ -24,20 +24,29 @@ const variants: Variants = {
 type OptionType = { name: string; value: string };
 
 interface Props {
+  classes?: {
+    root?: string;
+    content?: string;
+    searchBox?: string;
+    value?: string;
+    values?: string;
+    items?: string;
+    item?: string;
+  };
+  hideOnSelect?: boolean;
   multiple?: boolean;
-  onSelect?(value: string | string[]): void;
+  onSelect?(option: { value: string; values: string[] }): void;
+  options: OptionType[];
   searchable?: boolean;
   selected?: OptionType;
 }
-const options = [
-  { name: "Hi", value: "hi" },
-  { name: "Hello", value: "hello" },
-  { name: "Zoo", value: "zoo" },
-];
 const Select = ({
-  multiple = true,
+  classes,
+  hideOnSelect = false,
+  multiple = false,
   onSelect,
-  searchable = true,
+  options,
+  searchable = false,
   selected,
 }: Props) => {
   const [allOptions, setAllOptions] = useState<OptionType[]>(options);
@@ -55,13 +64,19 @@ const Select = ({
       const temp = uniqueArrayOfObject(values, value, "value");
       if (temp.length !== values.length) {
         setValues(temp);
-        onSelect && onSelect(temp.map((el) => el.value));
+        onSelect &&
+          onSelect({
+            value: temp[0].value,
+            values: temp.map((el) => el.value),
+          });
       }
     } else {
       setValues([value]);
-      onSelect && onSelect(value.value);
+      onSelect && onSelect({ value: value.value, values: [] });
     }
-    setFocus(false);
+    if (hideOnSelect) {
+      setFocus(false);
+    }
     setAllOptions(options);
   };
 
@@ -73,8 +88,8 @@ const Select = ({
         setAllOptions(
           options.filter(
             (el) =>
-              el.name.toLowerCase().includes(e.target.value) ||
-              el.value.toLowerCase().includes(e.target.value)
+              el.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+              el.value.toLowerCase().includes(e.target.value.toLowerCase())
           )
         );
       }
@@ -92,6 +107,7 @@ const Select = ({
     return () => {
       document.removeEventListener("click", click);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -99,7 +115,6 @@ const Select = ({
       searchRef.current && searchRef.current.focus();
     }
   }, [focus]);
-  console.log("render", counter++);
   return (
     <motion.div
       ref={ref}
@@ -107,14 +122,19 @@ const Select = ({
       onClick={rootClickHandler}
       initial="blur"
       animate={focus ? "focus" : "blur"}
-      className={classNames(styles.Root)}
+      className={classNames(styles.Root, classes?.root)}
     >
-      <div className={classNames(styles.Content)}>
+      <div className={classNames(styles.Content, classes?.content)}>
         {values.length === 0 && !focus && <p>Select a value</p>}
-        {!multiple && values[0] && <span>{values[0]}</span>}
+        {!multiple && values[0] && (
+          <span className={classNames(classes?.value)}>{values[0].name}</span>
+        )}
         {multiple &&
           values.map((item) => (
-            <span key={item.value} className={classNames(styles.Pill)}>
+            <span
+              key={item.value}
+              className={classNames(styles.Pill, classes?.values)}
+            >
               {item.name}
               <FiX
                 onClick={() => {
@@ -123,16 +143,30 @@ const Select = ({
               />
             </span>
           ))}
-        {searchable && focus && <input ref={searchRef} onChange={onChange} />}
+        {searchable && focus && (
+          <input
+            className={classNames(classes?.searchBox)}
+            ref={searchRef}
+            onChange={onChange}
+          />
+        )}
       </div>
       <AnimatePresence exitBeforeEnter>
-        {focus && allOptions.length && (
-          <Items>
-            {allOptions.map((el, index) => (
-              <Item key={index} onClick={() => selectValue(el)}>
-                {el.name}
-              </Item>
-            ))}
+        {focus && (
+          <Items className={classes?.items}>
+            {allOptions.length ? (
+              allOptions.map((el, index) => (
+                <Item
+                  className={classes?.item}
+                  key={index}
+                  onClick={() => selectValue(el)}
+                >
+                  {el.name}
+                </Item>
+              ))
+            ) : (
+              <p>No option to select</p>
+            )}
           </Items>
         )}
       </AnimatePresence>

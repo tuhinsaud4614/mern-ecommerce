@@ -20,13 +20,14 @@ const variants: Variants = {
 };
 
 interface Props {
+  className?:string;
   children: ReactNode[] | ReactNode;
 }
 
-const Items = ({ children }: Props) => {
+const Items = ({ className,children }: Props) => {
   return (
     <motion.ul
-      className={classNames(styles.Options)}
+      className={classNames(styles.Options, className)}
       variants={variants}
       initial="initial"
       animate="animate"

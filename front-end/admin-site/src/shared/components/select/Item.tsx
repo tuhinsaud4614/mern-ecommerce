@@ -27,14 +27,15 @@ const variants: Variants = {
 };
 
 interface Props {
+  className?:string;
   children: ReactNode[] | ReactNode;
   onClick?(): void
 }
 
-const Item = ({ children, onClick }: Props) => {
+const Item = ({ className, children, onClick }: Props) => {
   return (
     <motion.li
-      className={classNames(styles.Option)}
+      className={classNames(styles.Option, className)}
       variants={variants}
       whileHover={{ scaleX: 1.003 }}
       whileTap={{ scaleX: 1.005 }}

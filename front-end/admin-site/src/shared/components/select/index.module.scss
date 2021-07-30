@@ -1,5 +1,10 @@
 @import "../../../styles/functions", "../../../styles/mixins";
 
+%dis-color {
+  color: var(--disabled-color);
+  font-size: 1.6rem;
+}
+
 .Root {
   background: var(--primary-hover-color);
   border-radius: spacing();
@@ -14,8 +19,7 @@
   @include gap(1.25);
 
   & > p {
-    color: var(--disabled-color);
-    font-size: 1.6rem;
+    @extend %dis-color;
   }
 
   & > span {
@@ -61,6 +65,11 @@
   margin: 0;
   overflow: hidden;
   overflow-y: auto;
+
+  & > p {
+    @extend %dis-color;
+    padding: spacing(0.5) spacing();
+  }
 }
 
 .Option {
