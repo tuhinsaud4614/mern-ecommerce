@@ -1,11 +1,13 @@
 import { useState } from "react";
-import routes from "../../routes";
-import BreadCrumb from "../../shared/components/bread-crumb";
+// import routes from "../../routes";
+// import BreadCrumb from "../../shared/components/bread-crumb";
 // import { FC, useState } from "react";
 // import { BiFile } from "react-icons/bi";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
 
-import Select from "../../shared/components/select";
+import Pagination from "../../shared/components/pagination"
+
+// import Select from "../../shared/components/select";
 
 // import routes from "../../routes";
 // import Modal from "../../shared/components/modal";
@@ -22,10 +24,12 @@ const Dashboard = () => {
   // const [s, setS] = useState<boolean>(false);
   // const [r, setR] = useState<"left" | "right">("right");
   // const [m, setM] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<number>();
+  console.log(value);
   return (
     <div>
-      <Select
+      <Pagination onTap={(page) => setValue(page)}/>
+      {/* <Select
         options={[
           { name: "Hi", value: "hi" },
           { name: "Hello", value: "hello" },
@@ -36,11 +40,11 @@ const Dashboard = () => {
           setValue(value);
         }}
         // searchable
-      />
-      <BreadCrumb>
+      /> */}
+      {/* <BreadCrumb>
         <BreadCrumb.Item to={routes.dashboard.path} exact>dashboard</BreadCrumb.Item>
         <BreadCrumb.Item to={routes.category.path} exact>category</BreadCrumb.Item>
-      </BreadCrumb>
+      </BreadCrumb> */}
       {/* <div className={styles.root} style={{ padding: "1.6rem" }}>
         <Link to={routes.dashboard.path}>Dashboard</Link>
         <Button

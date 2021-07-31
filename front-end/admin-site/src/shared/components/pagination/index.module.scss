@@ -1,0 +1,51 @@
+@import "../../../styles/functions", "../../../styles/mixins";
+
+.Root {
+  padding: spacing();
+}
+
+.Pages {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  @include gap();
+}
+
+%common {
+  font-size: 1.6rem;
+  user-select: none;
+  @include flex-center(true);
+}
+
+.Page {
+  @extend %common;
+  padding: spacing();
+  height: spacing(4);
+  min-width: spacing(4);
+  outline: none;
+  border: none;
+  background: var(--primary-hover-color);
+  color: var(--text-color);
+  border-radius: spacing();
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  cursor: pointer;
+
+  @at-root &:hover,
+    .Active {
+    background: var(--accent-color);
+    color: var(--text-alt-color);
+  }
+
+  &:disabled {
+    background: var(--disabled-color);
+    color: var(--text-color);
+    cursor: not-allowed;
+  }
+}
+
+.Gap {
+  @extend %common;
+  color: var(--text-color);
+}

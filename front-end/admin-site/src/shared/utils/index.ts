@@ -13,3 +13,7 @@ export function uniqueArrayOfObject<T extends object, K extends keyof T>(
   }
   return [...prev, value];
 }
+
+export const range = (start: number, end: number): number[] => {
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+};

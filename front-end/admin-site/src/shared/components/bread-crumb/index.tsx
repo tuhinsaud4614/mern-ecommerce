@@ -19,6 +19,7 @@ const Item = ({
     </NavLink>
   );
 };
+Item.displayName = "BreadCrumb.Item";
 
 interface Props extends ComponentPropsWithoutRef<"nav"> {
   children?: ReactElement<NavLinkProps> | ReactElement<NavLinkProps>[];
