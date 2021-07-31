@@ -1,4 +1,6 @@
 import { useState } from "react";
+import routes from "../../routes";
+import BreadCrumb from "../../shared/components/bread-crumb";
 // import { FC, useState } from "react";
 // import { BiFile } from "react-icons/bi";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -35,6 +37,10 @@ const Dashboard = () => {
         }}
         // searchable
       />
+      <BreadCrumb>
+        <BreadCrumb.Item to={routes.dashboard.path} exact>dashboard</BreadCrumb.Item>
+        <BreadCrumb.Item to={routes.category.path} exact>category</BreadCrumb.Item>
+      </BreadCrumb>
       {/* <div className={styles.root} style={{ padding: "1.6rem" }}>
         <Link to={routes.dashboard.path}>Dashboard</Link>
         <Button

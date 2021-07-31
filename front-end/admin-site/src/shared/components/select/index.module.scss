@@ -10,6 +10,8 @@
   border-radius: spacing();
   padding: spacing(1.25);
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .Content {
@@ -50,6 +52,23 @@
     outline: none;
     border: none;
     background: transparent;
+  }
+}
+
+.IconArrow {
+  @include flex-center(true);
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-left: spacing(2);
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -#{spacing(0.875)};
+    bottom: 0;
+    width: spacing(0.25);
+    background: var(--disabled-color);
   }
 }
 

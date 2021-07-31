@@ -71,8 +71,8 @@ const Sidebar = () => {
                   <AnimatedIcon animated={subItemsOpen.includes("category")} />
                 </span>
                 <SubItems animated={subItemsOpen.includes("category")}>
-                  <SubItem name="Add Category" to={routes.dashboard.path} />
-                  <SubItem name="Add Sub Category" to={routes.dashboard.path} />
+                  <SubItem name="Add Category" to={routes.category.path} />
+                  <SubItem name="Add Sub Category" to={routes.subCategory.path} />
                 </SubItems>
               </li>
               <li className={styles.NavItem}>
@@ -82,15 +82,15 @@ const Sidebar = () => {
                   <AnimatedIcon animated={subItemsOpen.includes("products")} />
                 </span>
                 <SubItems animated={subItemsOpen.includes("products")}>
-                  <SubItem name="All Products" to={routes.dashboard.path} />
-                  <SubItem name="Add Product" to={routes.dashboard.path} />
+                  <SubItem name="All Products" to={routes.product.path} />
+                  <SubItem name="Add Product" to={routes.addProduct.path} />
                 </SubItems>
               </li>
-              <Item icon={FiBox} name="Orders" to={routes.dashboard.path} />
+              <Item icon={FiBox} name="Orders" to={routes.order.path} />
               <Item
                 icon={FiUsers}
                 name="Customers"
-                to={routes.dashboard.path}
+                to={routes.customer.path}
               />
             </ul>
           </nav>

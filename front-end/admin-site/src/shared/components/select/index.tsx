@@ -1,14 +1,12 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { FiX } from "react-icons/fi";
+import { FiChevronDown, FiX } from "react-icons/fi";
 
 import { uniqueArrayOfObject } from "../../utils";
 import Items from "./Items";
 import Item from "./Item";
 import styles from "./index.module.scss";
-
-let counter = 0;
 
 const variants: Variants = {
   blur: {
@@ -151,6 +149,9 @@ const Select = ({
           />
         )}
       </div>
+      <span className={styles.IconArrow}>
+        <FiChevronDown />
+      </span>
       <AnimatePresence exitBeforeEnter>
         {focus && (
           <Items className={classes?.items}>
