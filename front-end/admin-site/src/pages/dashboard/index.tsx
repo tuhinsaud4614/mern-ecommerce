@@ -6,6 +6,7 @@ import { useState } from "react";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import Pagination from "../../shared/components/pagination"
+import Table from "../../shared/components/table";
 
 // import Select from "../../shared/components/select";
 
@@ -26,8 +27,10 @@ const Dashboard = () => {
   // const [m, setM] = useState<boolean>(false);
   const [value, setValue] = useState<number>();
   console.log(value);
+  
   return (
     <div>
+      <Table title="Hello"/>
       <Pagination onTap={(page) => setValue(page)}/>
       {/* <Select
         options={[

@@ -1,0 +1,95 @@
+@import "../../../styles/functions", "../../../styles/mixins",
+  "../../../styles/variable";
+
+%flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+%page-text {
+  flex: 1;
+  font-size: 1.4rem;
+  color: var(--text-color);
+  padding-right: spacing();
+}
+
+.Container {
+  background: var(--primary-color);
+  border-radius: spacing();
+  box-shadow: $box-shadow;
+}
+
+.Header {
+  padding: spacing() spacing(1.25);
+  @extend %flex-align-center;
+  flex-wrap: wrap;
+
+  & > h1 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    text-transform: capitalize;
+  }
+}
+
+.Pagination {
+  margin-left: auto;
+  @extend %flex-align-center;
+  flex-wrap: wrap;
+
+  @at-root .PageRows {
+    @extend %flex-align-center;
+    & > .Select {
+      padding: spacing(0.5) spacing(); 
+    }
+    & > span {
+      @extend %page-text;
+    }
+  }
+
+  @at-root .PageActions {
+    margin-left: spacing(1.25);
+    @extend %flex-align-center;
+
+    & > span {
+      @extend %page-text;
+    }
+
+    & > .Btn {
+      box-shadow: none;
+      padding: spacing(0.5);
+      border-radius: spacing();
+      &:nth-child(2) {
+        margin-right: spacing(0.5);
+      }
+    }
+  }
+}
+
+.Body {
+  overflow-x: auto;
+}
+.Root {
+  border-collapse: collapse;
+  color: var(--text-color);
+  font-size: 1.6rem;
+
+  %cell-style {
+    padding: spacing();
+    border-top: 1px solid var(--secondary-hover-color);
+    text-align: start;
+  }
+
+  & th {
+    @extend %cell-style;
+  }
+  & td {
+    @extend %cell-style;
+    & > img {
+      width: spacing(8.75);
+      height: spacing(8.75);
+      border-radius: spacing();
+    }
+  }
+}

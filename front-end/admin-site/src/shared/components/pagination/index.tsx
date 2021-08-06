@@ -60,7 +60,7 @@ interface Props extends ComponentPropsWithoutRef<"nav"> {
 const Pagination = ({
   classes,
   className,
-  count = 7,
+  count = 10,
   current = 1,
   hideNextBtn = false,
   hidePrevBtn = false,
