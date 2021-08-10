@@ -5,8 +5,9 @@ import { useState } from "react";
 // import { BiFile } from "react-icons/bi";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
 
-import Pagination from "../../shared/components/pagination"
+import Pagination from "../../shared/components/pagination";
 import Table from "../../shared/components/table";
+import Badge from "../../shared/components/ui/badge";
 
 // import Select from "../../shared/components/select";
 
@@ -21,17 +22,127 @@ import Table from "../../shared/components/table";
 
 // interface Props {}
 
+const data = [
+  {
+    id: 1,
+    type: "Cash",
+    date: "September 9th 2020 1:15:18 am",
+    delV: "September 12th 2020",
+    badge: <Badge variant="info">Processing</Badge>,
+    price: "$120.00",
+    emp: "",
+  },
+  {
+    id: 2,
+    type: "Cash",
+    date: "September 9th 2020 1:15:18 am",
+    delV: "September 12th 2020",
+    badge: <Badge variant="success">Delivered</Badge>,
+    price: "$120.00",
+    emp: "",
+  },
+  {
+    id: 3,
+    type: "Cash",
+    date: "September 9th 2020 1:15:18 am",
+    delV: "September 12th 2020",
+    badge: <Badge variant="warning">Shipping</Badge>,
+    price: "$120.00",
+    emp: "",
+  },
+  {
+    id: 4,
+    type: "Cash",
+    date: "September 9th 2020 1:15:18 am",
+    delV: "September 12th 2020",
+    badge: <Badge variant="info">Processing</Badge>,
+    price: "$120.00",
+    emp: "",
+  },
+  {
+    id: 5,
+    type: "Cash",
+    date: "September 9th 2020 1:15:18 am",
+    delV: "September 12th 2020",
+    badge: <Badge variant="success">Delivered</Badge>,
+    price: "$120.00",
+    emp: "",
+  },
+  {
+    id: 6,
+    type: "Cash",
+    date: "September 9th 2020 1:15:18 am",
+    delV: "September 12th 2020",
+    badge: <Badge variant="warning">Shipping</Badge>,
+    price: "$120.00",
+    emp: "",
+  },
+];
+
 const Dashboard = () => {
   // const [s, setS] = useState<boolean>(false);
   // const [r, setR] = useState<"left" | "right">("right");
   // const [m, setM] = useState<boolean>(false);
   const [value, setValue] = useState<number>();
   console.log(value);
-  
+
   return (
     <div>
-      <Table title="Hello"/>
-      <Pagination onTap={(page) => setValue(page)}/>
+      <Table title="Hello" count={data.length}>
+        <Table.Head>
+          <Table.Row>
+            <Table.Cell scope="col" as="th">
+              Order ID
+            </Table.Cell>
+            <Table.Cell scope="col" as="th">
+              Payment Method
+            </Table.Cell>
+            <Table.Cell scope="col" as="th">
+              Order Date
+            </Table.Cell>
+            <Table.Cell scope="col" as="th">
+              Delivery Date
+            </Table.Cell>
+            <Table.Cell scope="col" as="th">
+              Status
+            </Table.Cell>
+            <Table.Cell scope="col" as="th">
+              Total
+            </Table.Cell>
+            <Table.Cell scope="col" as="th">
+              Action
+            </Table.Cell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {data.map((item) => (
+            <Table.Row key={item.id}>
+              <Table.Cell scope="row" as="th">
+                {item.id}
+              </Table.Cell>
+              <Table.Cell scope="row" as="td">
+                {item.type}
+              </Table.Cell>
+              <Table.Cell scope="row" as="td">
+                {item.date}
+              </Table.Cell>
+              <Table.Cell scope="row" as="td">
+                {item.delV}
+              </Table.Cell>
+              <Table.Cell scope="row" as="td">
+                {item.badge}
+              </Table.Cell>
+              <Table.Cell scope="row" as="td">
+                {item.price}
+              </Table.Cell>
+              <Table.Cell scope="row" as="td">
+                {item.emp}
+              </Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+      <Pagination onTap={(page) => setValue(page)} />
       {/* <Select
         options={[
           { name: "Hi", value: "hi" },

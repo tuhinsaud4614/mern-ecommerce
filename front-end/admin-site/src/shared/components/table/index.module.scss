@@ -14,7 +14,7 @@
 }
 
 .Container {
-  background: var(--primary-color);
+  background: var(--disabled-color);
   border-radius: spacing();
   box-shadow: $box-shadow;
 }
@@ -41,7 +41,7 @@
   @at-root .PageRows {
     @extend %flex-align-center;
     & > .Select {
-      padding: spacing(0.5) spacing(); 
+      padding: spacing(0.5) spacing();
     }
     & > span {
       @extend %page-text;
@@ -70,26 +70,29 @@
 .Body {
   overflow-x: auto;
 }
+
+%cell-style {
+  padding: spacing();
+  border-top: 1px solid var(--secondary-hover-color);
+  text-align: start;
+}
+
 .Root {
+  width: 100%;
   border-collapse: collapse;
   color: var(--text-color);
   font-size: 1.6rem;
+}
 
-  %cell-style {
-    padding: spacing();
-    border-top: 1px solid var(--secondary-hover-color);
-    text-align: start;
-  }
+.TH {
+  @extend %cell-style;
+}
 
-  & th {
-    @extend %cell-style;
-  }
-  & td {
-    @extend %cell-style;
-    & > img {
-      width: spacing(8.75);
-      height: spacing(8.75);
-      border-radius: spacing();
-    }
+.TD {
+  @extend %cell-style;
+  & > img {
+    width: spacing(8.75);
+    height: spacing(8.75);
+    border-radius: spacing();
   }
 }

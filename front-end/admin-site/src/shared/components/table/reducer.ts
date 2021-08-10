@@ -1,3 +1,5 @@
+import { createContext, Dispatch } from "react";
+
 export interface TableState {
   count: number;
   current: number;
@@ -64,5 +66,11 @@ function reducer(state: TableState, action: Actions): TableState {
       return state;
   }
 }
+
+export interface ContextProps extends TableState {
+  dispatch: Dispatch<Actions>;
+}
+
+export const TableContext = createContext({} as ContextProps);
 
 export default reducer;

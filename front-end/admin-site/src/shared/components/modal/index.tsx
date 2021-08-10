@@ -26,7 +26,10 @@ interface ModalProps {
   open: boolean;
   scroll?: boolean;
   staticBack?: boolean;
-  children?: ReactElement<HeadProps> | ReactElement<BodyProps> |ReactElement<FootProps>[];
+  children?:
+    | ReactElement<HeadProps>
+    | ReactElement<BodyProps>
+    | ReactElement<FootProps>[];
 }
 
 const backdropVariants: Variants = {
