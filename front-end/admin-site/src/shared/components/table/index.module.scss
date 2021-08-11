@@ -96,3 +96,11 @@
     border-radius: spacing();
   }
 }
+
+.Sortable {
+  cursor: pointer;
+  & > i {
+    display: inline-block;
+    color: var(--accent-color);
+  }
+}

@@ -94,7 +94,7 @@ const Dashboard = () => {
             <Table.Cell scope="col" as="th">
               Order ID
             </Table.Cell>
-            <Table.Cell scope="col" as="th">
+            <Table.Cell scope="col" as="th" onSort={(x) => {}}>
               Payment Method
             </Table.Cell>
             <Table.Cell scope="col" as="th">
@@ -120,24 +120,12 @@ const Dashboard = () => {
               <Table.Cell scope="row" as="th">
                 {item.id}
               </Table.Cell>
-              <Table.Cell scope="row" as="td">
-                {item.type}
-              </Table.Cell>
-              <Table.Cell scope="row" as="td">
-                {item.date}
-              </Table.Cell>
-              <Table.Cell scope="row" as="td">
-                {item.delV}
-              </Table.Cell>
-              <Table.Cell scope="row" as="td">
-                {item.badge}
-              </Table.Cell>
-              <Table.Cell scope="row" as="td">
-                {item.price}
-              </Table.Cell>
-              <Table.Cell scope="row" as="td">
-                {item.emp}
-              </Table.Cell>
+              <Table.Cell scope="row">{item.type}</Table.Cell>
+              <Table.Cell scope="row">{item.date}</Table.Cell>
+              <Table.Cell scope="row">{item.delV}</Table.Cell>
+              <Table.Cell scope="row">{item.badge}</Table.Cell>
+              <Table.Cell scope="row">{item.price}</Table.Cell>
+              <Table.Cell scope="row">{item.emp}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
