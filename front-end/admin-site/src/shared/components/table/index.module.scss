@@ -101,6 +101,7 @@
   cursor: pointer;
   & > i {
     display: inline-block;
+    margin-right: spacing(0.5);
     color: var(--accent-color);
   }
 }

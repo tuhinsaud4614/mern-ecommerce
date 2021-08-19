@@ -44,7 +44,7 @@ const TCell: FC<TCellProps> = ({
         >
           <FiChevronUp />
         </AnimatedIcon>
-      )}{" "}
+      )}
       {children}
     </Component>
   );

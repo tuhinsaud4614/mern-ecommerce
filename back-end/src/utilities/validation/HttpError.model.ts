@@ -1,13 +1,7 @@
 class HttpError extends Error {
   readonly error: string;
   readonly success: boolean;
-  constructor(public message: string, public code: number) {
-    super(message);
-    this.error = this.checkErrorMsg(this.code);
-    this.success = code >= 301 && code <= 500 ? false : true;
-  }
-
-  private checkErrorMsg(code: number): string {
+  private _checkError(code: number) {
     switch (code) {
       case 301:
         return "Moved Permanently";
@@ -37,6 +31,15 @@ class HttpError extends Error {
         return "An unknown error occurred";
     }
   }
-}
 
+  constructor(
+    public message: string,
+    public code: number,
+    public detail?: string
+  ) {
+    super(message);
+    this.success = code >= 301 && code <= 500 ? false : true;
+    this.error = this._checkError(code);
+  }
+}
 export default HttpError;
