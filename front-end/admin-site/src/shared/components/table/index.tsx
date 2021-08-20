@@ -1,8 +1,8 @@
-import { ReactNode, useReducer } from "react";
+import { ReactNode, useReducer, useRef } from "react";
 import classNames from "classnames";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
-import reducer, { ActionTypes, TableContext, TableState } from "./reducer";
+import reducer, { ActionTypes, setInitial, TableContext } from "./reducer";
 import { IconButton } from "../ui/button";
 import Select from "../select";
 import THead from "./THead";
@@ -13,25 +13,46 @@ import styles from "./index.module.scss";
 
 interface Props {
   count?: number;
-  title?: string;
-  children?:
-    ReactNode | ReactNode[];
-}
-const Table = ({ count, title, children }: Props) => {
-  const initialState: TableState = {
-    count: count || 0,
-    current: 1,
-    row: 5,
-    end: count && count < 5 ? count : 5,
-    start: 1,
+  filter?: {
+    list?: string[];
+    onFilter(value: string): void;
   };
-  const [state, dispatch] = useReducer(reducer, initialState);
-  
+  title?: string;
+  children?: ReactNode | ReactNode[];
+}
+const Table = ({ count, filter, title, children }: Props) => {
+  const [state, dispatch] = useReducer(reducer, setInitial(count || 0));
+  const ref = useRef<HTMLInputElement>(null);
+
   return (
     <section className={classNames(styles.Container)}>
       <TableContext.Provider value={{ ...state, dispatch }}>
         <header className={classNames(styles.Header)}>
           {title && <h1>{title}</h1>}
+          {filter && (
+            <>
+              <input
+                ref={ref}
+                name="tableFilter"
+                onChange={(e) => {}}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    dispatch({ type: ActionTypes.INIT });
+                    ref.current && filter.onFilter(ref.current.value);
+                  }
+                }}
+                list="table-filter-list"
+                className={classNames(styles.Filter)}
+              />
+              {filter.list && (
+                <datalist id="table-filter-list">
+                  {filter.list.map((el, index) => (
+                    <option key={index} value={el} />
+                  ))}
+                </datalist>
+              )}
+            </>
+          )}
           {count && (
             <div className={classNames(styles.Pagination)}>
               <div className={classNames(styles.PageRows)}>
@@ -90,7 +111,6 @@ const Table = ({ count, title, children }: Props) => {
 
 Table.displayName = "Table";
 export default Object.assign(Table, {
-
   Head: THead,
   Body: TBody,
   Row: TRow,

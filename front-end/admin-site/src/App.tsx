@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import { useAppDispatch } from "./store";
@@ -7,8 +7,9 @@ import { getThemeFromStorage, setThemeClass } from "./shared/hooks/useTheme";
 import routes from "./routes";
 import Header from "./shared/components/header";
 import Sidebar from "./shared/components/sidebar";
-import Dashboard from "./pages/dashboard";
 import styles from "./App.module.scss";
+
+const Dashboard = lazy(() => import("./pages/dashboard"));
 
 function App() {
   const rdxDispatch = useAppDispatch();
@@ -27,11 +28,13 @@ function App() {
       <section className={styles.Container}>
         <Sidebar />
         <main className={styles.Main}>
-          <Switch>
-            <Route path={routes.dashboard.path}>
-              <Dashboard />
-            </Route>
-          </Switch>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route path={routes.dashboard.path}>
+                <Dashboard />
+              </Route>
+            </Switch>
+          </Suspense>
         </main>
       </section>
     </>

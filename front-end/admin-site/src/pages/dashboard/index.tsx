@@ -83,12 +83,20 @@ const Dashboard = () => {
   // const [s, setS] = useState<boolean>(false);
   // const [r, setR] = useState<"left" | "right">("right");
   // const [m, setM] = useState<boolean>(false);
-  const [value, setValue] = useState<number>();
-  console.log(value);
+  const [_, setValue] = useState<number>();
 
   return (
     <div>
-      <Table title="Hello" count={data.length}>
+      <Table
+        title="Hello"
+        count={data.length}
+        filter={{
+          onFilter(value) {
+            console.log(value);
+          },
+          list: ["hello", "hi"],
+        }}
+      >
         <Table.Head>
           <Table.Row>
             <Table.Cell scope="col" as="th">

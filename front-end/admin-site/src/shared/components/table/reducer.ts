@@ -11,6 +11,7 @@ export interface TableState {
 export enum ActionTypes {
   ROW_CHANGE = "ROW_CHANGE",
   PAGE_CHANGE = "PAGE_CHANGE",
+  INIT = "INIT",
 }
 
 interface PageChange {
@@ -21,7 +22,11 @@ interface RowChange {
   type: typeof ActionTypes.ROW_CHANGE;
   payload: number;
 }
-export type Actions = PageChange | RowChange;
+
+interface Init {
+  type: typeof ActionTypes.INIT;
+}
+export type Actions = PageChange | RowChange | Init;
 
 function reducer(state: TableState, action: Actions): TableState {
   switch (action.type) {
@@ -62,6 +67,8 @@ function reducer(state: TableState, action: Actions): TableState {
         end: state.count < action.payload ? state.count : action.payload,
         start: 1,
       };
+    case ActionTypes.INIT:
+      return setInitial(state.count, state.row);
     default:
       return state;
   }
@@ -72,5 +79,15 @@ export interface ContextProps extends TableState {
 }
 
 export const TableContext = createContext({} as ContextProps);
+
+export function setInitial(count: number, row?: number): TableState {
+  return {
+    count: count || 0,
+    current: 1,
+    row: row || 5,
+    end: row ? (count < row ? count : row) : count && count < 5 ? count : 5,
+    start: 1,
+  };
+}
 
 export default reducer;

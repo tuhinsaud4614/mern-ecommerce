@@ -1,7 +1,8 @@
-import { ComponentPropsWithoutRef, FC, useState } from "react";
+import { ComponentPropsWithoutRef, FC, useContext, useState } from "react";
 import { FiChevronUp } from "react-icons/fi";
 import classNames from "classnames";
 
+import { ActionTypes, TableContext } from "./reducer";
 import AnimatedIcon from "../ui/animated-icon";
 import styles from "./index.module.scss";
 
@@ -18,6 +19,7 @@ const TCell: FC<TCellProps> = ({
   ...rest
 }: TCellProps) => {
   const [sortType, setSortType] = useState<"asc" | "dsc">("asc");
+  const { dispatch: rdxDispatch } = useContext(TableContext);
   return (
     <Component
       onClick={
@@ -25,6 +27,7 @@ const TCell: FC<TCellProps> = ({
           ? () => {
               setSortType((prev) => (prev === "asc" ? "dsc" : "asc"));
               onSort(sortType);
+              rdxDispatch({ type: ActionTypes.INIT });
             }
           : undefined
       }

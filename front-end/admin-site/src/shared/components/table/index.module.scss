@@ -33,6 +33,18 @@
   }
 }
 
+.Filter {
+  background: var(--primary-hover-color);
+  color: var(--text-color);
+  border-radius: spacing();
+  padding: spacing(0.5) spacing();
+  margin-right: spacing();
+  border: 0;
+  outline: 0;
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
 .Pagination {
   margin-left: auto;
   @extend %flex-align-center;

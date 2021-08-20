@@ -7,7 +7,6 @@ export interface THeadProps extends ComponentPropsWithoutRef<"thead">{
 }
 
 const THead = ({ children, ...rest }: THeadProps ) => {
-  console.log("Thead");
   return <thead {...rest}>{children}</thead>;
 };
 THead.displayName = "Table.Head";

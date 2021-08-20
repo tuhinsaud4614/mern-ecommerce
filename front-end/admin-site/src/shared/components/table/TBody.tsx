@@ -9,7 +9,6 @@ export interface TBodyProps extends ComponentPropsWithoutRef<"tbody"> {
 
 const TBody = ({ children, ...rest }: TBodyProps) => {
   const { start, end } = useContext(TableContext);
-  console.log("TBody");
   return (
     <tbody {...rest}>
       {Array.isArray(children) ? children.slice(start - 1, end) : children}
