@@ -83,7 +83,7 @@ const Dashboard = () => {
   // const [s, setS] = useState<boolean>(false);
   // const [r, setR] = useState<"left" | "right">("right");
   // const [m, setM] = useState<boolean>(false);
-  const [_, setValue] = useState<number>();
+  const setValue = useState<number>()[1];
 
   return (
     <div>

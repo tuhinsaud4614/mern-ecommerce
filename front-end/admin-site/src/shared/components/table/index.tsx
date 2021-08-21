@@ -43,6 +43,7 @@ const Table = ({ count, filter, title, children }: Props) => {
                 }}
                 list="table-filter-list"
                 className={classNames(styles.Filter)}
+                placeholder="Search here."
               />
               {filter.list && (
                 <datalist id="table-filter-list">
@@ -53,58 +54,59 @@ const Table = ({ count, filter, title, children }: Props) => {
               )}
             </>
           )}
-          {count && (
-            <div className={classNames(styles.Pagination)}>
-              <div className={classNames(styles.PageRows)}>
-                <span>Rows Per Page:</span>
-                <Select
-                  classes={{ root: styles.Select }}
-                  options={[
-                    { name: "5", value: "5" },
-                    { name: "10", value: "10" },
-                    { name: "15", value: "15" },
-                    { name: "20", value: "20" },
-                  ]}
-                  hideOnSelect
-                  onSelect={({ value }) => {
-                    dispatch({
-                      type: ActionTypes.ROW_CHANGE,
-                      payload: Number(value),
-                    });
-                  }}
-                />
-              </div>
-              <div className={classNames(styles.PageActions)}>
-                <span>
-                  {state.start}-{state.end} of {state.count}:
-                </span>
-                <IconButton
-                  disabled={state.start === 1}
-                  className={styles.Btn}
-                  onClick={() =>
-                    dispatch({ type: ActionTypes.PAGE_CHANGE, payload: "prev" })
-                  }
-                >
-                  <FiChevronLeft />
-                </IconButton>
-                <IconButton
-                  disabled={state.end === state.count}
-                  className={styles.Btn}
-                  onClick={() =>
-                    dispatch({ type: ActionTypes.PAGE_CHANGE, payload: "next" })
-                  }
-                >
-                  <FiChevronRight />
-                </IconButton>
-              </div>
-            </div>
-          )}
         </header>
         <div className={classNames(styles.Body)}>
           <table className={classNames(styles.Root)}>{children}</table>
         </div>
       </TableContext.Provider>
-      <footer className={classNames(styles.Footer)}></footer>
+      <footer className={classNames(styles.Footer)}>
+        {count && (
+          <div className={classNames(styles.Pagination)}>
+            <div className={classNames(styles.PageRows)}>
+              <span>Rows Per Page:</span>
+              <Select
+                classes={{ root: styles.Select }}
+                options={[
+                  { name: "5", value: "5" },
+                  { name: "10", value: "10" },
+                  { name: "15", value: "15" },
+                  { name: "20", value: "20" },
+                ]}
+                hideOnSelect
+                onSelect={({ value }) => {
+                  dispatch({
+                    type: ActionTypes.ROW_CHANGE,
+                    payload: Number(value),
+                  });
+                }}
+              />
+            </div>
+            <div className={classNames(styles.PageActions)}>
+              <span>
+                {state.start}-{state.end} of {state.count}:
+              </span>
+              <IconButton
+                disabled={state.start === 1}
+                className={styles.Btn}
+                onClick={() =>
+                  dispatch({ type: ActionTypes.PAGE_CHANGE, payload: "prev" })
+                }
+              >
+                <FiChevronLeft />
+              </IconButton>
+              <IconButton
+                disabled={state.end === state.count}
+                className={styles.Btn}
+                onClick={() =>
+                  dispatch({ type: ActionTypes.PAGE_CHANGE, payload: "next" })
+                }
+              >
+                <FiChevronRight />
+              </IconButton>
+            </div>
+          </div>
+        )}
+      </footer>
     </section>
   );
 };

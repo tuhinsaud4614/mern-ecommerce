@@ -1,12 +1,11 @@
 @import "../../../styles/functions", "../../../styles/variable";
 
 .Root {
+  max-width: 1200px;
   min-height: spacing(7.75);
-  background: var(--secondary-color);
   padding: spacing(2);
   display: flex;
   align-items: center;
-  box-shadow: $box-shadow;
 }
 
 .MenuIcon {

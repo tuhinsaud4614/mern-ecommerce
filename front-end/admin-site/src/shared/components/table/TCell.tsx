@@ -33,22 +33,25 @@ const TCell: FC<TCellProps> = ({
       }
       className={classNames(
         className,
-        Component === "th" ? styles.TH : styles.TD,
-        onSort && styles.Sortable
+        Component === "th" ? styles.TH : styles.TD
       )}
       {...rest}
     >
-      {onSort && (
-        <AnimatedIcon
-          initial={{ rotate: "0deg" }}
-          animate={
-            sortType === "dsc" ? { rotate: "-180deg" } : { rotate: "0deg" }
-          }
-        >
-          <FiChevronUp />
-        </AnimatedIcon>
+      {onSort ? (
+        <span className={classNames(styles.Sortable)}>
+          <AnimatedIcon
+            initial={{ rotate: "0deg" }}
+            animate={
+              sortType === "dsc" ? { rotate: "-180deg" } : { rotate: "0deg" }
+            }
+          >
+            <FiChevronUp />
+          </AnimatedIcon>
+          {children}
+        </span>
+      ) : (
+        children
       )}
-      {children}
     </Component>
   );
 };

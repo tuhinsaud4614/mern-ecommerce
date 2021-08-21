@@ -96,6 +96,8 @@ body.dark {
   left: 0;
   right: 0;
   z-index: 210;
+  background: var(--secondary-color);
+  box-shadow: $box-shadow;
 }
 
 @import "./styles/utilities";

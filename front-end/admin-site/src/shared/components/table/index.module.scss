@@ -17,16 +17,17 @@
   background: var(--disabled-color);
   border-radius: spacing();
   box-shadow: $box-shadow;
+  padding: spacing();
 }
 
 .Header {
-  padding: spacing() spacing(1.25);
+  margin-bottom: spacing();
   @extend %flex-align-center;
   flex-wrap: wrap;
+  @include gap();
 
   & > h1 {
     flex: 1;
-    margin: 0;
     font-size: 1.8rem;
     color: var(--text-color);
     text-transform: capitalize;
@@ -34,21 +35,79 @@
 }
 
 .Filter {
+  display: block;
+  width: 100%;
   background: var(--primary-hover-color);
   color: var(--text-color);
   border-radius: spacing();
   padding: spacing(0.5) spacing();
-  margin-right: spacing();
   border: 0;
   outline: 0;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: var(--text-color);
+
+  @include media(map-get($breakpoints, "sm")) {
+    & {
+      display: inline-block;
+      width: auto;
+    }
+  }
+}
+
+.Body {
+  overflow-x: auto;
+}
+
+%cell-style {
+  padding: spacing();
+  border-top: 1px solid var(--secondary-hover-color);
+  text-align: start;
+}
+
+.Root {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+
+.TRow:last-child {
+  border-bottom: 1px solid var(--secondary-hover-color);
+}
+
+.TH {
+  @extend %cell-style;
+}
+
+.TD {
+  @extend %cell-style;
+  & > img {
+    width: spacing(8.75);
+    height: spacing(8.75);
+    border-radius: spacing();
+  }
+}
+
+.Sortable {
+  display: inline-flex;
+  align-items: flex-start;
+  cursor: pointer;
+  & > i {
+    display: inline-block;
+    margin-right: spacing(0.5);
+    color: var(--accent-color);
+  }
+}
+
+.Footer {
+  padding-top: spacing();
 }
 
 .Pagination {
-  margin-left: auto;
   @extend %flex-align-center;
+  justify-content: flex-end;
   flex-wrap: wrap;
+  @include gap();
 
   @at-root .PageRows {
     @extend %flex-align-center;
@@ -76,44 +135,5 @@
         margin-right: spacing(0.5);
       }
     }
-  }
-}
-
-.Body {
-  overflow-x: auto;
-}
-
-%cell-style {
-  padding: spacing();
-  border-top: 1px solid var(--secondary-hover-color);
-  text-align: start;
-}
-
-.Root {
-  width: 100%;
-  border-collapse: collapse;
-  color: var(--text-color);
-  font-size: 1.6rem;
-}
-
-.TH {
-  @extend %cell-style;
-}
-
-.TD {
-  @extend %cell-style;
-  & > img {
-    width: spacing(8.75);
-    height: spacing(8.75);
-    border-radius: spacing();
-  }
-}
-
-.Sortable {
-  cursor: pointer;
-  & > i {
-    display: inline-block;
-    margin-right: spacing(0.5);
-    color: var(--accent-color);
   }
 }
