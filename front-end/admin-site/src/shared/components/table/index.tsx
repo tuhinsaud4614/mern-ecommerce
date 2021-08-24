@@ -30,7 +30,7 @@ const Table = ({ count, filter, title, children }: Props) => {
         <header className={classNames(styles.Header)}>
           {title && <h1>{title}</h1>}
           {filter && (
-            <>
+            <div>
               <input
                 ref={ref}
                 name="tableFilter"
@@ -52,7 +52,7 @@ const Table = ({ count, filter, title, children }: Props) => {
                   ))}
                 </datalist>
               )}
-            </>
+            </div>
           )}
         </header>
         <div className={classNames(styles.Body)}>

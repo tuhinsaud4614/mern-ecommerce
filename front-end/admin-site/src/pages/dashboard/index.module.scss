@@ -1,8 +1,57 @@
-@import "../../styles/mixins";
+@import "../../styles/functions", "../../styles/mixins", "../../styles/variable";
 
 .root {
   @include flex-center;
   justify-content: space-between;
   flex-wrap: wrap;
   @include gap(2);
+}
+
+.Highlights {
+  display: flex;
+  flex-wrap: wrap;
+  @include gap();
+}
+.HighlightItem {
+  flex: 0 0 auto;
+  width: 50%;
+  @include media(map-get($breakpoints, "md")) {
+    & {
+      width: 25%;
+    }
+  }
+}
+
+.HighlightWrapper {
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+.HighlightCard {
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  @each $v in $color-types {
+    &#{$v} {
+      background: var(--#{$v}-color);
+      &:hover {
+        background: var(--#{$v}-hover-color);
+      }
+    }
+  }
+
+  @at-root .Subtitle {
+    color: var(--text-color);
+  }
+
+  @at-root .CardIcon {
+    background: var(--text-disabled-color);
+    padding: spacing(0.75);
+    border-radius: 50%;
+    @include flex-center;
+    & > svg {
+      font-size: 1.8rem;
+      color: var(--text-alt-color);
+    }
+  }
 }

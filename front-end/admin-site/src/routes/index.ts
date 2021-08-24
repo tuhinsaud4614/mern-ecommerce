@@ -7,12 +7,12 @@ type TKeys =
   | "order"
   | "customer";
 
-interface IObj {
+export interface IRoute {
   name: string;
   path: string;
 }
 
-const routes: { [key in TKeys]: IObj } = {
+const routes: { [key in TKeys]: IRoute } = {
   dashboard: {
     name: "Dashboard",
     path: "/",

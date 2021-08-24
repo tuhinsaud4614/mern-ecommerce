@@ -1,0 +1,38 @@
+@import "../../../styles/functions", "../../../styles/mixins",
+  "../../../styles/variable";
+
+.Root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: $box-shadow;
+  border-radius: spacing();
+  padding: spacing(1.25);
+  background: var(--disabled-color);
+
+  & > div:not(:first-child) {
+    margin-left: spacing();
+  }
+}
+
+.Leading,
+.Tailing {
+  flex-shrink: 0;
+}
+
+.Content {
+  flex: 1;
+}
+
+.Title {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.Subtitle {
+  font-size: 1.4rem;
+  color: var(--text-disabled-color);
+  margin-top: spacing(0.5);
+}

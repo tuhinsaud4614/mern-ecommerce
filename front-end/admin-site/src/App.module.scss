@@ -2,11 +2,10 @@
 
 .Container {
   display: flex;
-  max-width: 1200px;
 }
 
 .Main {
-  flex: 1;
+  overflow-x: hidden;
   width: 100%;
   padding: spacing(2);
 }

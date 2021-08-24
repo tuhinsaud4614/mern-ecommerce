@@ -2,6 +2,7 @@
   "../../../styles/variable";
 
 .Root {
+  flex-shrink: 0;
   z-index: 200;
   position: fixed;
   left: 0;
@@ -9,6 +10,7 @@
   height: calc(100vh - 64px);
   background: var(--primary-color);
   overflow-y: auto;
+  overflow-x: hidden;
   width: 190px;
 
   box-shadow: 2px 0px 4px -1px rgba(0, 0, 0, 0.2),
@@ -41,6 +43,11 @@
 }
 
 .Nav {
+  @include media(map-get($breakpoints, "md")) {
+    & {
+      min-width: 190px;
+    }
+  }
   @at-root #{&}Items,
     #{&}SubItems {
     margin: 0;

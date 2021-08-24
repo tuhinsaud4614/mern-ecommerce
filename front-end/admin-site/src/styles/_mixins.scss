@@ -44,7 +44,7 @@
   width: calc(100% + #{$gap});
 
   & > * {
-    margin: {
+    padding: {
       left: $gap;
       top: $gap;
     }

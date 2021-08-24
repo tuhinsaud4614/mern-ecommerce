@@ -1,6 +1,9 @@
 import { useState } from "react";
-// import routes from "../../routes";
-// import BreadCrumb from "../../shared/components/bread-crumb";
+import { FaMoneyBill } from "react-icons/fa";
+import { FiClock, FiRefreshCw, FiXCircle } from "react-icons/fi";
+
+import routes from "../../routes";
+import PageContainer from "../../shared/components/page-container";
 // import { FC, useState } from "react";
 // import { BiFile } from "react-icons/bi";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -8,6 +11,7 @@ import { useState } from "react";
 import Pagination from "../../shared/components/pagination";
 import Table from "../../shared/components/table";
 import Badge from "../../shared/components/ui/badge";
+import HighlightCard from "./components/HighlightCard";
 
 // import Select from "../../shared/components/select";
 
@@ -18,7 +22,7 @@ import Badge from "../../shared/components/ui/badge";
 // import CheckboxRadio from "../../shared/components/ui/checkbox-radio";
 // import Input from "../../shared/components/ui/input";
 // import Link from "../../shared/components/ui/link";
-// import styles from "./index.module.scss";
+import styles from "./index.module.scss";
 
 // interface Props {}
 
@@ -86,7 +90,45 @@ const Dashboard = () => {
   const setValue = useState<number>()[1];
 
   return (
-    <div>
+    <PageContainer
+      title="Dashboard"
+      breads={[routes.dashboard, routes.category]}
+    >
+      <section className={styles.Highlights}>
+        <div className={styles.HighlightItem}>
+          <HighlightCard
+            variant="warning"
+            icon={FiClock}
+            title="Order Pending"
+            subtitle="2"
+          />
+        </div>
+        <div className={styles.HighlightItem}>
+          <HighlightCard
+            variant="danger"
+            icon={FiXCircle}
+            title="Order Cancel"
+            subtitle="2"
+          />
+        </div>
+        <div className={styles.HighlightItem}>
+          <HighlightCard
+            variant="info"
+            icon={FiRefreshCw}
+            title="Order Process"
+            subtitle="2"
+          />
+        </div>
+        <div className={styles.HighlightItem}>
+          <HighlightCard
+            variant="success"
+            icon={FaMoneyBill}
+            title="Total Income"
+            subtitle="$1202"
+          />
+        </div>
+      </section>
+      <br />
       <Table
         title="Hello"
         count={data.length}
@@ -249,7 +291,7 @@ const Dashboard = () => {
           </Button>
         </Modal.Foot>
       </Modal> */}
-    </div>
+    </PageContainer>
   );
 };
 

@@ -1,8 +1,8 @@
 @import "../../../styles/functions", "../../../styles/mixins";
 
 .Root {
-  padding: spacing();
-  font-size: 1.4rem;
+  padding: spacing(2) 0;
+  font-size: 1.6rem;
 }
 
 .Items {
@@ -17,7 +17,7 @@
 .Link {
   color: var(--text-color);
   background: var(--primary-hover-color);
-  border-radius: spacing(2);
+  border-radius: spacing();
   padding: spacing(0.5) spacing();
   text-decoration: none;
   transition: background 0.3s ease-in-out;
