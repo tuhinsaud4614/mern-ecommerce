@@ -17,10 +17,11 @@ interface Props {
     list?: string[];
     onFilter(value: string): void;
   };
+  footer?: ReactNode | ReactNode[];
   title?: string;
   children?: ReactNode | ReactNode[];
 }
-const Table = ({ count, filter, title, children }: Props) => {
+const Table = ({ count, filter, footer, title, children }: Props) => {
   const [state, dispatch] = useReducer(reducer, setInitial(count || 0));
   const ref = useRef<HTMLInputElement>(null);
 
@@ -59,52 +60,61 @@ const Table = ({ count, filter, title, children }: Props) => {
           <table className={classNames(styles.Root)}>{children}</table>
         </div>
       </TableContext.Provider>
-      <footer className={classNames(styles.Footer)}>
-        {count && (
-          <div className={classNames(styles.Pagination)}>
-            <div className={classNames(styles.PageRows)}>
-              <span>Rows Per Page:</span>
-              <SelectDefault
-                className={styles.Select}
-                onChange={(e) =>
-                  dispatch({
-                    type: ActionTypes.ROW_CHANGE,
-                    payload: Number(e.target.value),
-                  })
-                }
-              >
-                <SelectDefault.Option value="5">5</SelectDefault.Option>
-                <SelectDefault.Option value="10">10</SelectDefault.Option>
-                <SelectDefault.Option value="15">15</SelectDefault.Option>
-                <SelectDefault.Option value="20">20</SelectDefault.Option>
-              </SelectDefault>
+      {(count || footer) && (
+        <footer className={classNames(styles.Footer)}>
+          {count && (
+            <div className={classNames(styles.Pagination)}>
+              <div className={classNames(styles.PageRows)}>
+                <span>Rows Per Page:</span>
+                <SelectDefault
+                  className={styles.Select}
+                  onChange={(e) =>
+                    dispatch({
+                      type: ActionTypes.ROW_CHANGE,
+                      payload: Number(e.target.value),
+                    })
+                  }
+                >
+                  <SelectDefault.Option value="5">5</SelectDefault.Option>
+                  <SelectDefault.Option value="10">10</SelectDefault.Option>
+                  <SelectDefault.Option value="15">15</SelectDefault.Option>
+                  <SelectDefault.Option value="20">20</SelectDefault.Option>
+                </SelectDefault>
+              </div>
+              <div className={classNames(styles.PageActions)}>
+                <span>
+                  {state.start}-{state.end} of {state.count}:
+                </span>
+                <IconButton
+                  disabled={state.start === 1}
+                  className={styles.Btn}
+                  onClick={() =>
+                    dispatch({
+                      type: ActionTypes.PAGE_CHANGE,
+                      payload: "prev",
+                    })
+                  }
+                >
+                  <FiChevronLeft />
+                </IconButton>
+                <IconButton
+                  disabled={state.end === state.count}
+                  className={styles.Btn}
+                  onClick={() =>
+                    dispatch({
+                      type: ActionTypes.PAGE_CHANGE,
+                      payload: "next",
+                    })
+                  }
+                >
+                  <FiChevronRight />
+                </IconButton>
+              </div>
             </div>
-            <div className={classNames(styles.PageActions)}>
-              <span>
-                {state.start}-{state.end} of {state.count}:
-              </span>
-              <IconButton
-                disabled={state.start === 1}
-                className={styles.Btn}
-                onClick={() =>
-                  dispatch({ type: ActionTypes.PAGE_CHANGE, payload: "prev" })
-                }
-              >
-                <FiChevronLeft />
-              </IconButton>
-              <IconButton
-                disabled={state.end === state.count}
-                className={styles.Btn}
-                onClick={() =>
-                  dispatch({ type: ActionTypes.PAGE_CHANGE, payload: "next" })
-                }
-              >
-                <FiChevronRight />
-              </IconButton>
-            </div>
-          </div>
-        )}
-      </footer>
+          )}
+          {footer}
+        </footer>
+      )}
     </section>
   );
 };

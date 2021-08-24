@@ -33,7 +33,7 @@ const HighlightCard = ({
           styles[`HighlightCard${variant}`]
         )}
       >
-        <ListTile.Title style={{ color: "var(--text-alt-color)" }}>
+        <ListTile.Title style={{ color: "var(--text-alt-color)" }} className={styles.Title}>
           {title}
         </ListTile.Title>
         <ListTile.Subtitle className={styles.Subtitle}>{subtitle}</ListTile.Subtitle>

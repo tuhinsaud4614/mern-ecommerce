@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { FaMoneyBill } from "react-icons/fa";
-import { FiClock, FiRefreshCw, FiXCircle } from "react-icons/fi";
+import {
+  FiClock,
+  FiEdit2,
+  FiEye,
+  FiRefreshCw,
+  FiTrash,
+  FiXCircle,
+} from "react-icons/fi";
 
 import routes from "../../routes";
 import PageContainer from "../../shared/components/page-container";
@@ -8,8 +15,7 @@ import PageContainer from "../../shared/components/page-container";
 // import { BiFile } from "react-icons/bi";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
 
-import Pagination from "../../shared/components/pagination";
-import SelectDefault from "../../shared/components/select/SelectDefault";
+// import Pagination from "../../shared/components/pagination";
 import Table from "../../shared/components/table";
 import Badge from "../../shared/components/ui/badge";
 import HighlightCard from "./components/HighlightCard";
@@ -19,7 +25,7 @@ import HighlightCard from "./components/HighlightCard";
 // import routes from "../../routes";
 // import Modal from "../../shared/components/modal";
 // import Badge from "../../shared/components/ui/badge";
-// import Button, { IconButton } from "../../shared/components/ui/button";
+import { IconButton } from "../../shared/components/ui/button";
 // import CheckboxRadio from "../../shared/components/ui/checkbox-radio";
 // import Input from "../../shared/components/ui/input";
 // import Link from "../../shared/components/ui/link";
@@ -129,22 +135,13 @@ const Dashboard = () => {
           />
         </div>
       </section>
-      <Table
-        title="Hello"
-        count={data.length}
-        filter={{
-          onFilter(value) {
-            console.log(value);
-          },
-          list: ["hello", "hi"],
-        }}
-      >
+      <Table title="Recent Orders">
         <Table.Head>
           <Table.Row>
             <Table.Cell scope="col" as="th">
               Order ID
             </Table.Cell>
-            <Table.Cell scope="col" as="th" onSort={(x) => {}}>
+            <Table.Cell scope="col" as="th">
               Payment Method
             </Table.Cell>
             <Table.Cell scope="col" as="th">
@@ -175,12 +172,33 @@ const Dashboard = () => {
               <Table.Cell scope="row">{item.delV}</Table.Cell>
               <Table.Cell scope="row">{item.badge}</Table.Cell>
               <Table.Cell scope="row">{item.price}</Table.Cell>
-              <Table.Cell scope="row">{item.emp}</Table.Cell>
+              <Table.Cell scope="row">
+                <div className={styles.TableAction}>
+                  <IconButton
+                    className={styles.TableActionButton}
+                    variant="success"
+                  >
+                    <FiEye />
+                  </IconButton>
+                  <IconButton
+                    className={styles.TableActionButton}
+                    variant="warning"
+                  >
+                    <FiEdit2 />
+                  </IconButton>
+                  <IconButton
+                    className={styles.TableActionButton}
+                    variant="danger"
+                  >
+                    <FiTrash />
+                  </IconButton>
+                </div>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
-      <Pagination onTap={(page) => setValue(page)} />
+      {/* <Pagination onTap={(page) => setValue(page)} /> */}
       {/* <Select
         options={[
           { name: "Hi", value: "hi" },

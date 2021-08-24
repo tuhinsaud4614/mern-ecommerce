@@ -41,6 +41,15 @@
     }
   }
 
+  @at-root .Title {
+    font-size: 1.2rem;
+    @include media(map-get($breakpoints, "sm")) {
+      & {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
   @at-root .Subtitle {
     color: var(--text-color);
   }
@@ -51,8 +60,25 @@
     border-radius: 50%;
     @include flex-center;
     & > svg {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       color: var(--text-alt-color);
+      @include media(map-get($breakpoints, "sm")) {
+        & {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+.TableAction {
+  display: flex;
+  align-items: center;
+
+  & > #{&}Button {
+    border-radius: spacing();
+    &:not(:first-child) {
+      margin-left: spacing();
     }
   }
 }
