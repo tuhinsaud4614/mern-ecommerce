@@ -9,6 +9,7 @@ import PageContainer from "../../shared/components/page-container";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import Pagination from "../../shared/components/pagination";
+import SelectDefault from "../../shared/components/select/SelectDefault";
 import Table from "../../shared/components/table";
 import Badge from "../../shared/components/ui/badge";
 import HighlightCard from "./components/HighlightCard";
@@ -128,7 +129,6 @@ const Dashboard = () => {
           />
         </div>
       </section>
-      <br />
       <Table
         title="Hello"
         count={data.length}

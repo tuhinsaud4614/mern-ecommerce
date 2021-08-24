@@ -4,12 +4,12 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import reducer, { ActionTypes, setInitial, TableContext } from "./reducer";
 import { IconButton } from "../ui/button";
-import Select from "../select";
 import THead from "./THead";
 import TBody from "./TBody";
 import TRow from "./TRow";
 import TCell from "./TCell";
 import styles from "./index.module.scss";
+import SelectDefault from "../select/SelectDefault";
 
 interface Props {
   count?: number;
@@ -64,22 +64,20 @@ const Table = ({ count, filter, title, children }: Props) => {
           <div className={classNames(styles.Pagination)}>
             <div className={classNames(styles.PageRows)}>
               <span>Rows Per Page:</span>
-              <Select
-                classes={{ root: styles.Select }}
-                options={[
-                  { name: "5", value: "5" },
-                  { name: "10", value: "10" },
-                  { name: "15", value: "15" },
-                  { name: "20", value: "20" },
-                ]}
-                hideOnSelect
-                onSelect={({ value }) => {
+              <SelectDefault
+                className={styles.Select}
+                onChange={(e) =>
                   dispatch({
                     type: ActionTypes.ROW_CHANGE,
-                    payload: Number(value),
-                  });
-                }}
-              />
+                    payload: Number(e.target.value),
+                  })
+                }
+              >
+                <SelectDefault.Option value="5">5</SelectDefault.Option>
+                <SelectDefault.Option value="10">10</SelectDefault.Option>
+                <SelectDefault.Option value="15">15</SelectDefault.Option>
+                <SelectDefault.Option value="20">20</SelectDefault.Option>
+              </SelectDefault>
             </div>
             <div className={classNames(styles.PageActions)}>
               <span>

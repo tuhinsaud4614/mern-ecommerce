@@ -2,14 +2,14 @@ $variants: info, danger, warning, success, primary, secondary, accent, disabled;
 
 @each $v in $variants {
   .text-#{$v} {
-    color: var(--#{$v}-color);
+    color: var(--#{$v}-color) !important;
   }
 
   .bg-#{$v} {
-    background: var(--#{$v}-color);
+    background: var(--#{$v}-color) !important;
   }
 
   .border-#{$v} {
-    border: 1px solid var(--#{$v}-color);
+    border: 1px solid var(--#{$v}-color) !important;
   }
 }

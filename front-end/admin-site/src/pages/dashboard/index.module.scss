@@ -11,6 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   @include gap();
+  margin-bottom: spacing(2);
 }
 .HighlightItem {
   flex: 0 0 auto;

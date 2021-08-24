@@ -112,7 +112,10 @@
   @at-root .PageRows {
     @extend %flex-align-center;
     & > .Select {
-      padding: spacing(0.5) spacing();
+      padding: spacing(0.5);
+      display: inline-block;
+      width: auto;
+      box-shadow: none;
     }
     & > span {
       @extend %page-text;

@@ -61,26 +61,12 @@
 }
 
 .Helper {
-  font-size: 1.4rem;
-  margin: {
-    top: spacing();
-    left: spacing();
-  }
+  @include helper;
+  margin-left: spacing();
   display: block;
 }
 
 .Label {
-  font-size: 1.6rem;
-  font-weight: 500;
-  display: inline-block;
-  margin: {
-    bottom: spacing();
-    left: spacing();
-  }
-
-  & > b {
-    color: var(--danger-color);
-    font-size: 1.6rem;
-    font-weight: 900;
-  }
+  @include label;
+  margin-left: spacing();
 }

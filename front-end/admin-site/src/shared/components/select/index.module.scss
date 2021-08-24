@@ -1,15 +1,20 @@
-@import "../../../styles/functions", "../../../styles/mixins";
+@import "../../../styles/functions", "../../../styles/mixins",
+  "../../../styles/variable";
 
 %dis-color {
   color: var(--disabled-color);
   font-size: 1.6rem;
 }
 
-.Root {
+%common-style {
   background: var(--primary-hover-color);
   border-radius: spacing();
   padding: spacing();
   position: relative;
+}
+
+.Root {
+  @extend %common-style;
   display: flex;
   align-items: center;
 }
@@ -98,5 +103,24 @@
   transition: background 0.3s ease-in-out;
   &:hover {
     background: var(--disabled-color);
+  }
+}
+
+.SelectDefault {
+  @extend %common-style;
+  color: var(--accent-color);
+  font-size: 1.6rem;
+  border: none;
+  box-shadow: $box-shadow;
+  display: block;
+  width: 100%;
+  outline: none;
+
+  @at-root .Label {
+    @include label;
+  }
+
+  @at-root .Helper {
+    @include helper;
   }
 }

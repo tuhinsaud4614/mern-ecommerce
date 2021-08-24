@@ -1,4 +1,4 @@
-@import "./styles/functions";
+@import "./styles/functions", "./styles/mixins";
 
 .Container {
   display: flex;
@@ -8,4 +8,9 @@
   overflow-x: hidden;
   width: 100%;
   padding: spacing(2);
+}
+
+.Loader {
+  @include flex-center;
+  margin-top: 100px;
 }

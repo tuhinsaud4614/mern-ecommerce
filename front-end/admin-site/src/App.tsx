@@ -29,13 +29,21 @@ function App() {
       <section className={styles.Container}>
         <Sidebar />
         <main className={styles.Main}>
-          <Suspense fallback={<Loader as="rotate-plane" />}>
-            <Loader as="folding-cube" variant="accent" />
-            {/* <Switch>
+          <Suspense
+            fallback={
+              <Loader
+                as="rotate-plane"
+                variant="secondary"
+                wrapperClassName={styles.Loader}
+                wrapper
+              />
+            }
+          >
+            <Switch>
               <Route path={routes.dashboard.path}>
                 <Dashboard />
               </Route>
-            </Switch> */}
+            </Switch>
           </Suspense>
         </main>
       </section>
